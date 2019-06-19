@@ -128,7 +128,6 @@ typings/
 
 # End of https://www.gitignore.io/api/node,macos,visualstudiocode
 node_modules/
-public/styles
 .env
 *.log
 *.sqlite3
