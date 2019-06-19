@@ -40,11 +40,11 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
-app.use("/api/posts", postsRoutes(knex));
-app.use("/api/comments", commentsRoutes(knex));
-app.use("/api/likes", likesRoutes(knex));
-app.use("/api/collections", collectionsRoutes(knex));
+app.use("/users", usersRoutes(knex));
+app.use("/posts", postsRoutes(knex));
+app.use("/comments", commentsRoutes(knex));
+app.use("/likes", likesRoutes(knex));
+app.use("/collections", collectionsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
