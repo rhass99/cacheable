@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- include head partial -->
+    <% include ./partials/_head %>
+  </head>
+  <body>
+    <header>
+      <!-- include header partial -->
+      <% include ./partials/_header %>
+      <p>If you have registered an account already, please use this link to <a href="#">log-in</a></p>
+      <h3>Create Account</h3>
+    </header>
+
+    <form action="/register" method="POST">
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input class="form-control" type="email" name="email" aria-describedby="emailHelp">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input class="form-control" type="password" name="password">
+      </div>
+      <button type="submit" class="btn btn-outline-primary">Register</button>
+    </form>
+
+    <footer>
+      <!-- include footer -->
+      <% include ./partials/_footer %>
+    </footer>
+  </body>
+</html>
