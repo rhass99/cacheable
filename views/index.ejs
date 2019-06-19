@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
-
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-    <!-- App JS -->
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+    <!-- include head partial -->
+    <% include ./partials/_head %>
   </head>
-
   <body>
-    <h1>Hello World!</h1>
+  <header>
+    <!-- include header partial -->
+    <% include ./partials/_header %>
+  </header>
+  
+  <h3>Welcome to cacheable!</h3>
+  
+  <footer>
+    <!-- include footer -->
+    <% include ./partials/_footer %>
+  </footer>
   </body>
 </html>
