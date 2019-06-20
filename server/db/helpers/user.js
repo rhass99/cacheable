@@ -19,6 +19,9 @@ export const makeUserHelpers = (knex) => {
         if (err) return console.error(err);
         cb(null, result);
       });
-    }
+    },
+    
+    // update name and password and return user
+    updateUser
   };
 };
