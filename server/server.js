@@ -5,6 +5,7 @@ require('dotenv').config();
 const ENV         = process.env.ENV || "development";
 const PORT        = process.env.PORT || 8080;
 const express     = require("express");
+var   cookieParser = require('cookie-parser')
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
@@ -15,6 +16,7 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
+app.use(cookieParser())
 // Import middleware
 const mid = require('./middleware/mid')();
 
