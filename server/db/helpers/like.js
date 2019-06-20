@@ -1,4 +1,4 @@
-export const makeLikeHelpers = (knex) => {
+module.exports = function makeLikeHelpers (knex) {
   return {
     // Saves like to db, if already exist, delete that like
     saveLike: (newLike, cb) => {
@@ -38,9 +38,8 @@ export const makeLikeHelpers = (knex) => {
       this.getLikes(user_id, 'user_id', cb).forEach((like) => 
       knex.select().from('post').where('id', like.post_id).asCallback((err, result) => {
         if (err) return console.error(err);
-        output.push(result);
-      }));
-      cb(null, output);
+        output.push(result[0]);
+      })).then(() => cb(null, output));
     }
   };
 };

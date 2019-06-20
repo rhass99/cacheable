@@ -1,4 +1,4 @@
-export const makeUserHelpers = (knex) => {
+module.exports = function makeUserHelpers (knex) {
   return {
     // Saves user to db
     saveUser: (newUser, cb) => {
@@ -22,6 +22,15 @@ export const makeUserHelpers = (knex) => {
     },
     
     // update name and password and return user
-    updateUser
+    updateUser: (id, first_name, last_name, password, cb) => {
+      knex.select().from('user').where('email', id).update({
+        first_name: first_name,
+        last_name: last_name,
+        password: password
+      }).asCallback((err, result) => {
+        if (err) return console.error(err);
+        cb(null, result);
+      })
+    }
   };
 };
