@@ -1,15 +1,9 @@
-export const makePostHelpers = (knex) => {
+export const makeTagHelpers = (knex) => {
   return {
-    // Saves post to db
-    savePost: (newPost, cb) => {
-      knex('post').insert({
-        id: newPost.post_id,
-        user_id: newPost.user_id,
-        url: newPost.url,
-        title: newPost.title,
-        description: newPost.description,
-        img: newPost.img,
-        rating: null
+    // Saves tag to db
+    saveTag: (newTag, cb) => {
+      knex('tag').insert({
+        name: newTag
       }).asCallback((err) => {
         if (err) return console.error(err);
         cb(null, true);
@@ -18,7 +12,7 @@ export const makePostHelpers = (knex) => {
 
     // Get posts from db, either searching by something or
     // nonspecific with a limit
-    getPosts: (value, property, cb) => {
+    getTags: (value, property, cb) => {
       if (property) {
         knex.select().from('post').where(property, value).asCallback((err, result) => {
           if (err) return console.error(err);
