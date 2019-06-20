@@ -7,6 +7,7 @@ An app that ..
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
 2. Update the .env file with your correct local information
 3. Install dependencies: `npm i`
+4. Fix to binaries for sass: `npm rebuild node-sass`
 5. Run migrations: `npm run knex migrate:latest`
   - Check the migrations folder to see what gets created in the DB
 6. Run the seed: `npm run knex seed:run`

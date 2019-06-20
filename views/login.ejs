@@ -8,25 +8,27 @@
     <header>
       <!-- include header partial -->
       <% include ./partials/_header %>
-      <p>If you do not have an account already, please use this link to <a href="#">register</a></p>
-      <h3>Login</h3>
+      <p>If you do not have an account already, please use this link to <a href="/register">register</a></p>
     </header>
-
-    <form action="/login" method="POST">
-      <!-- Email -->
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input class="form-control" type="text" name="email" >
-      </div>
-      <!-- Password -->
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input class="form-control" type="password" name="password" >
-      </div>
-      <button type="submit" class="btn btn-outline-primary">Login</button>
-    </form>
     
-    <footer>
+    <section class="container">
+      <h3>Login</h3>
+      <form action="/login" method="POST">
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input class="form-control" type="text" name="email" >
+        </div>
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input class="form-control" type="password" name="password" >
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Login</button>
+      </form>
+    </section>
+    
+    <footer class="footer">
       <!-- include footer -->
       <% include ./partials/_footer %>
     </footer>
