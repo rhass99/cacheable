@@ -15,10 +15,10 @@ export const makeUserHelpers = (knex) => {
 
     // Get a user from db with email (serving as id)
     getUser: (id, cb) => {
-      knex.select().from('user').where('email', id).asCallback((err) => {
-        if (err) return console.error(err, result);
+      knex.select().from('user').where('email', id).asCallback((err, result) => {
+        if (err) return console.error(err);
         cb(null, result);
       });
     }
   };
-}
+};

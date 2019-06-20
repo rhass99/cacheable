@@ -7,8 +7,10 @@ export const makePostHelpers = (knex) => {
         url: newPost.url,
         title: newPost.title,
         description: newPost.description,
-        img: newPost.img,
-        rating: newPost.rating
+        img: newPost.img
+        // we're doing something special with rating, so
+        // this shouldn't be here, right?
+        // rating: newPost.rating
       }).asCallback((err) => {
         if (err) return console.error(err);
         cb(null, true);
@@ -19,8 +21,8 @@ export const makePostHelpers = (knex) => {
     // nonspecific with a limit
     getPosts: (value, property, cb) => {
       if (property) {
-        knex.select().from('post').where(property, value).asCallback((err) => {
-          if (err) return console.error(err, result);
+        knex.select().from('post').where(property, value).asCallback((err, result) => {
+          if (err) return console.error(err);
           cb(null, result);
         });
       } else {
@@ -28,4 +30,4 @@ export const makePostHelpers = (knex) => {
       }
     }
   };
-}
+};
