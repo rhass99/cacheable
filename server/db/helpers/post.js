@@ -1,4 +1,4 @@
-export const makePostHelpers = (knex) => {
+module.exports = function makePostHelpers (knex) {
   return {
     // Saves post to db
     savePost: (newPost, cb) => {

@@ -1,37 +1,34 @@
-export const makeTagHelpers = (knex) => {
+module.exports = function makeTagHelpers (knex) {
   return {
     // Saves tag to db
     saveTag: (newTag, cb) => {
       knex('tag').insert({
-        name: newTag
+        id: newTag
       }).asCallback((err) => {
         if (err) return console.error(err);
         cb(null, true);
       });
     },
 
-    // Get posts from db, either searching by something or
-    // nonspecific with a limit
-    getTags: (value, property, cb) => {
-      if (property) {
-        knex.select().from('post').where(property, value).asCallback((err, result) => {
+    // Get tags from db (all or by post)
+    getTags: (post_id, cb) => {
+      if (!post_id) {
+        knex.select().from('tag').asCallback((err, result) => {
           if (err) return console.error(err);
           cb(null, result);
         });
       } else {
-        knex.select().from('post').limit(value);
+        const output = [];
+        knex.select().from('post_tag').where('post_id', post_id).asCallback((err, result) => {
+          if (err) return console.error(err);
+          result.forEach((post_tag) => {
+            knex.select().from('tag').where('id', post_tag.tag_id).asCallback((err, result) => {
+              if (err) return console.error(err);
+              output.push(result[0]);
+            }).then(() => cb(null, output));
+          })
+        })
       }
-    },
-
-    updateRating: (rating, post_id, cb) => {
-      const currentRating = knex.select('rating').from('post').where('post_id', post_id).asCallback((err, result) => {
-        if (err) return console.error(err);
-        return Number(result[0]);
-      });
-      knex('post').where('post_id', post_id).update({rating: currentRating + Number(rating)}).asCallback((err) => {
-        if (err) return console.error(err);
-        cb(null, true);
-      });
     }
   };
 };

@@ -1,4 +1,4 @@
-export const makeCommentHelpers = (knex) => {
+module.exports = function makeCommentHelpers (knex) {
   return {
     // Saves comment to db
     saveComment: (newComment, cb) => {
