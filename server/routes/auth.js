@@ -6,13 +6,15 @@ const router  = express.Router();
 const mid = require('../middleware/mid')();
 
 module.exports = (knex) => {
-
+  // will apply middleware to check if cookie exists
   router.get("/login", (req, res) => {
     // render Login page
-    // render the error if there is one
+    //----//
+    // To Nikki: render the error if there is one,
     // example if the user tries to log in with wrong password
     // or user tried to login with wrong email
-    // res.locals.errors will have the error
+    // res.locals.errors will have the error as a string
+    //----//
     res.locals.errors = req.query.error
     res.render("login")
   });
@@ -24,7 +26,7 @@ module.exports = (knex) => {
 
   router.get("/logout", (req, res) => {
     res.clearCookie("_owner")
-    res.redirect("/");
+    res.redirect("../");
   });
 
   router.post("/login", (req, res) => {
@@ -35,13 +37,18 @@ module.exports = (knex) => {
     // if user doesnt exist redirect to GET /login to try again with error
 
     // redirect to login or to home
-    // put user_id, user_email, user_first_name on cookie
+    // get user_id, user_email, user_first_name on cookie (if u need them for rendering)
     res.cookie('_owner', {  })
     // render homepage
-    res.redirect('/')
+    res.redirect('../')
   });
 
   router.post("/register", (req, res) => {
+    //-----//
+    // To Nikki: Please have the names of fields in your Register form as below
+    // email, password, firstName, lastName
+    //-----//
+
     const {email, password, firsName, lastName} = req.body
     // Call database to add user
     // -> get all posts and all tags and user Name and put them on res.locals.data
@@ -50,7 +57,7 @@ module.exports = (knex) => {
     // put user_id, user_email, user_first_name on cookie
     res.cookie('_owner', {  })
     // render homepage
-    res.redirect('/')
+    res.redirect('../')
   });
 
   return router;

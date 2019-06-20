@@ -62,10 +62,13 @@ app.use("/auth", authRoutes(authHelpers)); // ok
 
 // Home page
 app.get("/", mid.softCheck, (req, res) => {
-  // Get all posts and all tags and send them to Homepage on res.locals.data
+  //-----//
+  // To Nikki:
+  // All posts and all tags will be on res.locals.data
   // Check res.locals.loggedin
   // if (false) -> user not logged in
   // if (true) -> user logged in, get user Name email and id from cookie
+  //-----//
   let templateVars = res.locals.data;
   res.render("index", templateVars);
 });
