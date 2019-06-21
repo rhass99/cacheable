@@ -6,6 +6,7 @@ body {
 h3 {
   font-size: 2em;
   padding-left: 0.5em;
+  text-align: center;
 }
 
 .header {
@@ -88,6 +89,11 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-top: 2em;
+}
+
+.resources .card-columns {
+  margin-bottom: 0;
 }
 
 .resources h4 {
@@ -129,5 +135,30 @@ h3 {
     border-radius: 3px;
     background-color: #f2f2f2;
     padding: 2em;
+  }
+}
+
+@media (max-width: 425px) {
+  .card-columns {
+    padding: 0;
+  }
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+  .nav {
+    width: 100%;
+    flex-direction: column;
+  }
+  .nav a {
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .resources .box {
+    margin: 1em;
+    width: 70%;
   }
 }
