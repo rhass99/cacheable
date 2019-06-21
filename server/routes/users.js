@@ -6,7 +6,7 @@ const mid = require('../middleware/mid')();
 
 module.exports = (knex) => {
   // get user resources route
-  router.get('/:id/resources', (req, res) => {
+  router.get('/:id/resources', mid.authenticate, (req, res) => {
     const userID = req.params.id;
     // Query database for all tags and posts by user ID
     const templateVars = {} // fill that from database
@@ -17,7 +17,7 @@ module.exports = (knex) => {
     // res.render('')
   });
 
-  router.get('/:id', (req, res) => {
+  router.get('/:id', mid.authenticate, (req, res) => {
     const userID = req.params.id;
     // Query database for user profile by id
     const templateVars = {} // fill that from database
@@ -28,7 +28,7 @@ module.exports = (knex) => {
     // res.render('')
   });
 
-  router.post('/:id', (req, res) => {
+  router.post('/:id', mid.authenticate, (req, res) => {
     const userID = req.params.id;
     // Edit user profile in the database and return user back
     const templateVars = {} // fill that from database

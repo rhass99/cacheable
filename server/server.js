@@ -25,7 +25,7 @@ const userHelpers = require('./db/helpers/user')(knex);
 const likeHelpers = require('./db/helpers/like')(knex);
 const postHelpers = require('./db/helpers/post')(knex);
 const commentHelpers = require('./db/helpers/comment')(knex);
-const authHelpers = require('./db/helpers/auth')(knex);
+const authHelpers = require('./db/helpers/user')(knex);
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
