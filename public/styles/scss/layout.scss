@@ -1,16 +1,111 @@
+$border-color: #b3b3b3;
+$grey-background: #f2f2f2;
+$breakpoint-phone: 425px;
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 1024px;
 body {
   font-size: 100%;
 }
-header {
-  padding: 10%;
-  text-align: center;
+h3 {
+  font-size: 2em;
+  padding-left: 0.5em;
 }
-.container {
-  padding: 0 10%;
+.header {
+  padding-left: 1em;
+  padding-top: 0.5em;
+  margin-bottom: 2em;
+  a {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-top: 1em;
+  }
+  a:link {
+    text-decoration: none;
+  }
+  img {
+    width: 2.5em;
+    height: 2.5em;
+  }
 }
-.footer {
-  position: absolute;
-  bottom: 0;
+.content {
+  display: flex;
+  .side-nav {
+    width: 100%;
+    padding: 1em;
+  }
+}
+.card-columns {
+  padding: 1em;
+  margin-bottom: 4em;
+}
+.box {
+  margin: 0 auto;
   width: 100%;
   text-align: center;
+  p {
+    margin-bottom: 0.5em;
+  }
+  form {
+    text-align: left;
+    padding: 0.5em;
+    margin-top: 3em;
+    label {
+      margin-bottom: 0;
+    }
+    button {
+      margin-top: 1.5em;
+    }
+  }
+}
+.footer {
+  width: 100%;
+  text-align: center;
+  background-color: $grey-background;
+  bottom: 0;
+  position: fixed;
+  p {
+    margin-bottom: 0;
+  }
+}
+.resources {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  h4 {
+    border-bottom: 1px solid $border-color;
+    margin-bottom: 0.6em;
+    padding-bottom: 0.2em;
+  }
+  ul {
+    padding: 0;
+    li {
+      list-style-type: none;
+      h5 {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+//Media Queries
+@media (min-width: $breakpoint-phone) {
+  .box {
+    width: 70%;
+  }
+}
+@media (min-width: $breakpoint-tablet) {
+  .box {
+    width: 50%;
+  }
+}
+@media (min-width: $breakpoint-laptop) {
+  .box {
+    width: 40%;
+    form {
+      border: 1px solid $border-color;
+      border-radius: 3px;
+      background-color: $grey-background;
+      padding: 2em;
+    }
+  }
 }
