@@ -10,10 +10,10 @@
       <% include ./partials/_header %>
       <p>If you do not have an account already, please use this link to <a href="/register">register</a></p>
     </header>
-    
+
     <section class="container">
       <h3>Login</h3>
-      <form action="/login" method="POST">
+      <form action="/auth/login" method="POST">
         <!-- Email -->
         <div class="form-group">
           <label for="email">Email:</label>
@@ -27,7 +27,7 @@
         <button type="submit" class="btn btn-outline-primary">Login</button>
       </form>
     </section>
-    
+
     <footer class="footer">
       <!-- include footer -->
       <% include ./partials/_footer %>

@@ -35,7 +35,7 @@ module.exports = function makeLikeHelpers (knex) {
 
     getLikedPosts: (user_id, cb) => {
       const output = [];
-      this.getLikes(user_id, 'user_id', cb).forEach((like) => 
+      this.getLikes(user_id, 'user_id', cb).forEach((like) =>
       knex.select().from('post').where('id', like.post_id).asCallback((err, result) => {
         if (err) return console.error(err);
         output.push(result[0]);

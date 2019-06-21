@@ -20,7 +20,7 @@ module.exports = function makeUserHelpers (knex) {
         cb(null, result);
       });
     },
-    
+
     // update name and password and return user
     updateUser: (id, first_name, last_name, password, cb) => {
       knex.select().from('user').where('email', id).update({

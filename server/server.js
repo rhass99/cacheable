@@ -5,6 +5,7 @@ require('dotenv').config();
 const ENV         = process.env.ENV || "development";
 const PORT        = process.env.PORT || 8080;
 const express     = require("express");
+var   cookieParser = require('cookie-parser')
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
@@ -15,12 +16,23 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
+app.use(cookieParser())
+// Import middleware
+const mid = require('./middleware/mid')();
+
+// Import db helpers
+const userHelpers = require('./db/helpers/user')(knex);
+const likeHelpers = require('./db/helpers/like')(knex);
+const postHelpers = require('./db/helpers/post')(knex);
+const commentHelpers = require('./db/helpers/comment')(knex);
+const authHelpers = require('./db/helpers/auth')(knex);
+
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const postsRoutes = require("./routes/posts");
 const likesRoutes = require("./routes/likes");
 const commentsRoutes = require("./routes/comments");
-const collectionsRoutes = require("./routes/collections");
+const authRoutes = require("./routes/auth");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -42,15 +54,23 @@ app.use("/styles", sass({
 }), express.static(path.join(__dirname, 'public')));
 
 // Mount all resource routes
-app.use("/users", usersRoutes(knex));
-app.use("/posts", postsRoutes(knex));
-app.use("/comments", commentsRoutes(knex));
-app.use("/likes", likesRoutes(knex));
-app.use("/collections", collectionsRoutes(knex));
+app.use("/users", usersRoutes(userHelpers));
+app.use("/posts", postsRoutes(postHelpers));
+app.use("/api/comments", commentsRoutes(commentHelpers));
+app.use("/api/likes", likesRoutes(likeHelpers));
+app.use("/auth", authRoutes(authHelpers)); // ok
 
 // Home page
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", mid.softCheck, (req, res) => {
+  //-----//
+  // To Nikki:
+  // All posts and all tags will be on res.locals.data
+  // Check res.locals.loggedin
+  // if (false) -> user not logged in
+  // if (true) -> user logged in, get user Name email and id from cookie
+  //-----//
+  let templateVars = res.locals.data;
+  res.render("index", templateVars);
 });
 
 app.listen(PORT, () => {
