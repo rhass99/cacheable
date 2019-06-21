@@ -19,13 +19,13 @@ module.exports = (userdb) => {
     //----//
     res.locals.errors = req.query.error
     console.log("err", res.locals.errors)
-    res.render("login", {navExists: false})
+    res.render("login", {navExists: true})
   });
 
   // Get Register page
   router.get("/register", (req, res) => {
     // render Register page
-    res.render("register", {navExists: false});
+    res.render("register", {navExists: true});
   });
 
   // Logout
