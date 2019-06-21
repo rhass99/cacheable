@@ -18,6 +18,10 @@ module.exports = function makePostHelpers (knex) {
 
     // Get posts from db, either searching by something or
     // nonspecific with a limit
+    // To get all posts for home page:
+    // getPosts(10, null, CALLBACK)
+    // To get all posts for specific user
+    // getPosts(email, 'user_id', CALLBACK)
     getPosts: (value, property, cb) => {
       if (property) {
         knex.select().from('post').where(property, value).asCallback((err, result) => {

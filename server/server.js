@@ -25,7 +25,7 @@ const userHelpers = require('./db/helpers/user')(knex);
 const likeHelpers = require('./db/helpers/like')(knex);
 const postHelpers = require('./db/helpers/post')(knex);
 const commentHelpers = require('./db/helpers/comment')(knex);
-const authHelpers = require('./db/helpers/auth')(knex);
+const authHelpers = require('./db/helpers/user')(knex);
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -54,7 +54,7 @@ app.use("/styles", sass({
 }), express.static(path.join(__dirname, 'public')));
 
 // Mount all resource routes
-app.use("/users", usersRoutes(userHelpers));
+app.use("/users", usersRoutes(userHelpers, postHelpers));
 app.use("/posts", postsRoutes(postHelpers));
 app.use("/api/comments", commentsRoutes(commentHelpers));
 app.use("/api/likes", likesRoutes(likeHelpers));

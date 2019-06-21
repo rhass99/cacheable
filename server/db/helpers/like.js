@@ -32,7 +32,8 @@ module.exports = function makeLikeHelpers (knex) {
         cb(null, result);
       });
     },
-
+    // To get all the posts liked by user
+    // getLikedPosts(email, CALLBACK)
     getLikedPosts: (user_id, cb) => {
       const output = [];
       this.getLikes(user_id, 'user_id', cb).forEach((like) =>
