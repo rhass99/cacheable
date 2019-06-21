@@ -7,16 +7,14 @@ module.exports = function makeCommentHelpers (knex) {
         user_id: newComment.user_id,
         text: newComment.text
       }).asCallback((err) => {
-        if (err) return console.error(err);
-        cb(null, true);
+        cb(err, true);
       });
     },
 
     // Get comments from db for one post
     getComments: (id, cb) => {
       knex.select().from('comment').where('post_id', id).asCallback((err, result) => {
-        if (err) return console.error(err);
-        cb(null, result);
+        cb(err, result);
       });
     }
   };

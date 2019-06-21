@@ -7,20 +7,18 @@ module.exports = function makeLikeHelpers (knex) {
       const existingLike = knex.select().from('like').where('post_id', post_id).andWhere('user_id', user_id);
 
       if (existingLike.asCallback((err, result) => {
-        if (err) return console.error(err);
+        if (err) cb(err, null);
         return result;
-      })) {
+      }).length > 0) {
         existingLike.del().asCallback((err) => {
-          if (err) return console.error(err);
-          cb(null, true);
+          cb(err, true);
         })
       } else {
         knex('like').insert({
           post_id: post_id,
           user_id: user_id
         }).asCallback((err) => {
-          if (err) return console.error(err);
-          cb(null, true);
+          cb(err, true);
         });
       }
     },
@@ -28,19 +26,22 @@ module.exports = function makeLikeHelpers (knex) {
     // Get likes from db for one post or user
     getLikes: (id, property, cb) => {
       knex.select().from('like').where(property, id).asCallback((err, result) => {
-        if (err) return console.error(err);
-        cb(null, result);
+        cb(err, result);
       });
     },
+
     // To get all the posts liked by user
     // getLikedPosts(email, CALLBACK)
     getLikedPosts: (user_id, cb) => {
       const output = [];
-      this.getLikes(user_id, 'user_id', cb).forEach((like) =>
-      knex.select().from('post').where('id', like.post_id).asCallback((err, result) => {
-        if (err) return console.error(err);
-        output.push(result[0]);
-      })).then(() => cb(null, output));
+      knex.select().from('like').where('user_id', user_id).asCallback((err, result) => {
+        result.forEach((like) => {
+          knex.select().from('post').where('id', like.post_id).asCallback((err, result) => {
+          if (err) cb(err, null);
+          output.push(result[0]);
+          }).then(() => cb(err, output));
+        })
+      })
     }
   };
-};
+}

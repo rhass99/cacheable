@@ -1,12 +1,28 @@
 module.exports = function makeTagHelpers (knex) {
   return {
     // Saves tag to db
-    saveTag: (newTag, cb) => {
+    saveTag: (newTags, cb) => {
+      newTags.forEach((newTag) => {
+        knex('post_tag').insert({
+          post_id: newTag.post_id,
+          tag_id: newTag.tag_id
+        }).then(() => {
+          knex.select().from('tag').where('id', newTag.tag_id).asCallback((err, result) => {
+            if (err) cb(err, true);
+            if (result.length === 0) {
+              knex('tag').insert({
+                id: newTag.tag_id
+              }).asCallback((err) => {
+                cb(err, true);
+              })
+            }
+          })
+        })
+      })
       knex('tag').insert({
         id: newTag
       }).asCallback((err) => {
-        if (err) return console.error(err);
-        cb(null, true);
+        cb(err, true);
       });
     },
 
@@ -18,18 +34,16 @@ module.exports = function makeTagHelpers (knex) {
     getTags: (post_id, cb) => {
       if (!post_id) {
         knex.select().from('tag').asCallback((err, result) => {
-          if (err) return console.error(err);
-          cb(null, result);
+          cb(err, result);
         });
       } else {
         const output = [];
         knex.select().from('post_tag').where('post_id', post_id).asCallback((err, result) => {
-          if (err) return console.error(err);
           result.forEach((post_tag) => {
             knex.select().from('tag').where('id', post_tag.tag_id).asCallback((err, result) => {
-              if (err) return console.error(err);
+              if (err) cb(err, null);
               output.push(result[0]);
-            }).then(() => cb(null, output));
+            }).then(() => cb(err, output));
           })
         })
       }

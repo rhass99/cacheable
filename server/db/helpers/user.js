@@ -8,16 +8,14 @@ module.exports = function makeUserHelpers (knex) {
         last_name: newUser.last_name,
         password: newUser.password
       }).asCallback((err) => {
-        if (err) return console.error(err);
-        cb(null, true);
+        cb(err, true);
       });
     },
 
     // Get a user from db with email (serving as id)
     getUser: (id, cb) => {
       knex.select().from('user').where('email', id).asCallback((err, result) => {
-        if (err) return console.error(err);
-        cb(null, result);
+        cb(err, result);
       });
     },
 
@@ -28,8 +26,7 @@ module.exports = function makeUserHelpers (knex) {
         last_name: last_name,
         password: password
       }).asCallback((err, result) => {
-        if (err) return console.error(err);
-        cb(null, result);
+        cb(err, result);
       })
     }
   };
