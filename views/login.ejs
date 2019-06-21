@@ -8,11 +8,12 @@
     <header>
       <!-- include header partial -->
       <% include ./partials/_header %>
-      <p>If you do not have an account already, please use this link to <a href="/register">register</a></p>
     </header>
-
-    <section class="container">
-      <h3>Login</h3>
+    
+    <section class="box">
+      <h3>Welcome back</h3>
+      <p class="text-muted">Log in to your Cacheable account</p>
+      <p>New to Cacheable? <a href="/register">Sign up</a></p>
       <form action="/auth/login" method="POST">
         <!-- Email -->
         <div class="form-group">
@@ -24,11 +25,11 @@
           <label for="password">Password:</label>
           <input class="form-control" type="password" name="password" >
         </div>
-        <button type="submit" class="btn btn-outline-primary">Login</button>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
       </form>
     </section>
-
-    <footer class="footer">
+    
+    <footer class="footer mt-auto py-3">
       <!-- include footer -->
       <% include ./partials/_footer %>
     </footer>
