@@ -109,6 +109,9 @@ h3 {
   .box {
     width: 50%;
   }
+  .card {
+    width: 300px;
+  }
 }
 @media (min-width: $breakpoint-laptop) {
   .box {
@@ -135,6 +138,19 @@ h3 {
     flex-direction: column;
     a {
       text-align: center;
+    }
+  }
+}
+@media (max-width: $breakpoint-tablet) {
+  .content {
+    flex-direction: column;
+  }
+  .header {
+    margin-bottom: 0;
+  }
+  .side-nav {
+    .flex-column {
+      flex-direction: row!important;
     }
   }
 }

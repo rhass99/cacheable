@@ -124,6 +124,9 @@ h3 {
   .box {
     width: 50%;
   }
+  .card {
+    width: 300px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -153,6 +156,18 @@ h3 {
   }
   .nav a {
     text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+  .header {
+    margin-bottom: 0;
+  }
+  .side-nav .flex-column {
+    flex-direction: row !important;
   }
 }
 
