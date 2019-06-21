@@ -4,6 +4,7 @@
     <img src="/images/icon.svg" alt="cacheable-logo">
     <a href="/">cacheable</a>
   </p>
+  <% if(!locals.navExists) { %>
   <ul class="nav nav-pills">
     <li class="nav-item">
       <a class="nav-link" href="/auth/login">Log In</a>
@@ -12,4 +13,5 @@
       <a class="nav-link active" href="/auth/register">Sign Up</a>
     </li>
   </ul>
+  <% } %>
 </nav>
