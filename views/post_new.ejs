@@ -10,34 +10,34 @@
     <% include ./partials/_header %>
   </header>
   <section class="box">
-    
+
     <h3>Cache a new resource</h3>
     <form action="/posts" method="POST">
-  
+
       <!-- Resource URL -->
       <div class="form-group">
         <label for="url">Enter a URL:</label>
         <input class="form-control" type="text" name="url" placeholder="http://" required>
       </div>
-  
+
       <!-- Title -->
       <div class="form-group">
-        <label for="url">Title:</label>
-        <input class="form-control" type="text" name="url" required>
+        <label for="title">Title:</label>
+        <input class="form-control" type="text" name="title" required>
       </div>
-  
+
       <!-- Description -->
       <div class="form-group">
-        <label for="url">Description:</label>
-        <textarea class="form-control" type="text" name="url"></textarea>
+        <label for="description">Description:</label>
+        <textarea class="form-control" type="text" name="description"></textarea>
       </div>
-  
+
       <button type="submit" class="btn btn-primary inline">Submit</button>
-      
+
     </form>
 
   </section>
-  
+
   <footer class="footer mt-auto py-3">
     <!-- include footer -->
     <% include ./partials/_footer %>

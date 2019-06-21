@@ -2,10 +2,11 @@
 
 const express = require('express');
 const router  = express.Router();
-
+const utils = require('./utils');
 const mid = require('../middleware/mid')();
 
-module.exports = (knex) => {
+
+module.exports = (userdb) => {
 
   // will apply middleware to check if cookie exists
   router.get("/login", (req, res) => {
@@ -18,13 +19,13 @@ module.exports = (knex) => {
     //----//
     res.locals.errors = req.query.error
     console.log("err", res.locals.errors)
-    res.render("login")
+    res.render("login", {navExists: false})
   });
 
   // Get Register page
   router.get("/register", (req, res) => {
     // render Register page
-    res.render("register");
+    res.render("register", {navExists: false});
   });
 
   // Logout
@@ -35,9 +36,10 @@ module.exports = (knex) => {
 
   // Login
   router.post("/login", (req, res) => {
-    const {email, password} = req.body
+    let {email, password} = req.body
+    email = utils.generateMD5Hash(email)
     // Call database to get user
-    knex.getUser(email, (err, result) => {
+    userdb.getUser(email, (err, result) => {
       if(result.length > 0 && result[0].password === password) {
         res.cookie('_owner', {
           email,
@@ -62,8 +64,9 @@ module.exports = (knex) => {
     // To Nikki: Please have the names of fields in your Register form as below
     // email, password, firstName, lastName
     //-----//
-    const {email, password, first_name, last_name} = req.body
-    knex.saveUser({
+    let {email, password, first_name, last_name} = req.body
+    email = utils.generateMD5Hash(email)
+    userdb.saveUser({
       email,
       first_name,
       last_name,

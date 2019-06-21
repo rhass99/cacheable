@@ -3,18 +3,22 @@
 const express = require('express');
 const router  = express.Router();
 const mid = require('../middleware/mid')();
+const utils = require('./utils');
 
-module.exports = (knex) => {
+module.exports = (userdb, postdb) => {
   // get user resources route
   router.get('/:id/resources', mid.authenticate, (req, res) => {
-    const userID = req.params.id;
+    const userID = req.cookies._owner.email;
     // Query database for all tags and posts by user ID
     const templateVars = {} // fill that from database
+    postdb.getPosts(userID, 'user_id', (err, result) => {
+      console.log("dbresult", result)
+    })
     //---//
     // To Nikki:
     // Render show_user_Resources ejs file with template vars
     //----//
-    // res.render('')
+    res.render('user_resources', templateVars)
   });
 
   router.get('/:id', mid.authenticate, (req, res) => {

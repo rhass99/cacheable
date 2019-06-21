@@ -11,6 +11,10 @@ module.exports = function makeTagHelpers (knex) {
     },
 
     // Get tags from db (all or by post)
+    // To get all tags
+    // getTags(null, CALLBACK)
+    // To get all tags by post
+    // getTags(post_id, CALLBACK)
     getTags: (post_id, cb) => {
       if (!post_id) {
         knex.select().from('tag').asCallback((err, result) => {

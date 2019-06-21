@@ -54,7 +54,7 @@ app.use("/styles", sass({
 }), express.static(path.join(__dirname, 'public')));
 
 // Mount all resource routes
-app.use("/users", usersRoutes(userHelpers));
+app.use("/users", usersRoutes(userHelpers, postHelpers));
 app.use("/posts", postsRoutes(postHelpers));
 app.use("/api/comments", commentsRoutes(commentHelpers));
 app.use("/api/likes", likesRoutes(likeHelpers));
