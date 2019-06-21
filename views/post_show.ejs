@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- include head partial -->
+    <% include ./partials/_head %>
+  </head>
+  <body>
+  <header>
+    <!-- include header partial -->
+    <% include ./partials/_header %>
+  </header>
+  <section class="box">
+
+    <p>To open this resource in a new tab, <a href="#" target="_blank">click here</a></p>
+  
+    <form action="/posts" method="POST">
+  
+      <!-- Resource URL -->
+      <div class="form-group">
+        <label for="url">URL:</label>
+        <input class="form-control" type="text" name="url" placeholder="http://" required>
+      </div>
+  
+      <!-- Title -->
+      <div class="form-group">
+        <label for="url">Title:</label>
+        <input class="form-control" type="text" name="url" required>
+      </div>
+  
+      <!-- Description -->
+      <div class="form-group">
+        <label for="url">Description:</label>
+        <textarea class="form-control" type="text" name="url"></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary inline">Submit</button>
+      
+    </form>
+
+  </section>
+  
+  <footer class="footer mt-auto py-3">
+    <!-- include footer -->
+    <% include ./partials/_footer %>
+  </footer>
+  </body>
+</html>
