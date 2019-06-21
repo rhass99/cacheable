@@ -5,19 +5,26 @@ $breakpoint-tablet: 768px;
 $breakpoint-laptop: 1024px;
 body {
   font-size: 100%;
+  padding: 0.5em;
 }
 h3 {
   font-size: 2em;
   padding-left: 0.5em;
 }
 .header {
-  padding-left: 1em;
-  padding-top: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 1em;
   margin-bottom: 2em;
+  ul {
+    a {
+      font-size: 1.1em;
+      border-radius: 0.15rem;
+    }
+  }
   a {
     font-size: 1.5em;
     font-weight: bold;
-    padding-top: 1em;
   }
   a:link {
     text-decoration: none;
