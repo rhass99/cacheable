@@ -2,18 +2,126 @@ body {
   font-size: 100%;
 }
 
-header {
-  padding: 10%;
+h3 {
+  font-size: 2em;
+  padding-left: 0.5em;
+}
+
+.header {
+  padding-left: 1em;
+  padding-top: 0.5em;
+  margin-bottom: 2em;
+}
+
+.header a {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding-top: 1em;
+}
+
+.header a:link {
+  text-decoration: none;
+}
+
+.header img {
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.content {
+  display: flex;
+}
+
+.content .side-nav {
+  width: 100%;
+  padding: 1em;
+}
+
+.card-columns {
+  padding: 1em;
+  margin-bottom: 4em;
+}
+
+.box {
+  margin: 0 auto;
+  width: 100%;
   text-align: center;
 }
 
-.container {
-  padding: 0 10%;
+.box p {
+  margin-bottom: 0.5em;
+}
+
+.box form {
+  text-align: left;
+  padding: 0.5em;
+  margin-top: 3em;
+}
+
+.box form label {
+  margin-bottom: 0;
+}
+
+.box form button {
+  margin-top: 1.5em;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   text-align: center;
+  background-color: #f2f2f2;
+  bottom: 0;
+  position: fixed;
+}
+
+.footer p {
+  margin-bottom: 0;
+}
+
+.resources {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.resources h4 {
+  border-bottom: 1px solid #b3b3b3;
+  margin-bottom: 0.6em;
+  padding-bottom: 0.2em;
+}
+
+.resources ul {
+  padding: 0;
+}
+
+.resources ul li {
+  list-style-type: none;
+}
+
+.resources ul li h5 {
+  display: inline-block;
+}
+
+@media (min-width: 425px) {
+  .box {
+    width: 70%;
+  }
+}
+
+@media (min-width: 768px) {
+  .box {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .box {
+    width: 40%;
+  }
+  .box form {
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 2em;
+  }
 }
