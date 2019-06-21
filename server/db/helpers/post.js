@@ -11,8 +11,7 @@ module.exports = function makePostHelpers (knex) {
         img: newPost.img,
         rating: null
       }).asCallback((err) => {
-        if (err) return console.error(err);
-        cb(null, true);
+        cb(err, true);
       });
     },
 
@@ -25,22 +24,32 @@ module.exports = function makePostHelpers (knex) {
     getPosts: (value, property, cb) => {
       if (property) {
         knex.select().from('post').where(property, value).asCallback((err, result) => {
-          if (err) return console.error(err);
-          cb(null, result);
+          cb(err, result);
         });
+      } else if (property === "tag_id") {
+        const output = [];
+        knex.select().from('post_tag').where('tag_id', value).asCallback((err, result) => {
+          result.forEach((post_tag) => {
+            knex.select().from('post').where('id', post_tag.post_id).asCallback((err, result) => {
+              if (err) cb(err, null);
+              output.push(result[0]);
+            }).then(() => cb(err, output));
+          })
+        })
       } else {
-        knex.select().from('post').limit(value);
+        knex.select().from('post').limit(value).asCallback((err, result) => {
+          cb(err, result);
+        });
       }
     },
 
     updateRating: (rating, post_id, cb) => {
       const currentRating = knex.select('rating').from('post').where('post_id', post_id).asCallback((err, result) => {
-        if (err) return console.error(err);
+        if (err) cb(err, null);
         return Number(result[0]);
       });
       knex('post').where('post_id', post_id).update({rating: currentRating + Number(rating)}).asCallback((err) => {
-        if (err) return console.error(err);
-        cb(null, true);
+        cb(err, true);
       });
     }
   };
