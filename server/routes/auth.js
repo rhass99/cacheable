@@ -29,9 +29,9 @@ module.exports = (userdb) => {
   });
 
   // Logout
-  router.get("/logout", (req, res) => {
+  router.post("/logout", (req, res) => {
     res.clearCookie("_owner")
-    res.redirect("../");
+    res.redirect("/");
   });
 
   // Login
