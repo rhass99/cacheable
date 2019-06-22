@@ -16,11 +16,12 @@ module.exports = (knex) => {
       post_id: postID,
       user_id: userID
     }, (err, result) => {
-      console.log(err)
+      res.json({result})
     })
     //---//
     // To Nikki:
-    // Update the Heart button if you get back true //
+    // Update the Heart button to red if you get back {result: true} //
+    // Update the Heart button to black if you get back {result: false} //
     //----//
   })
 

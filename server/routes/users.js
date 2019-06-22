@@ -92,7 +92,7 @@ module.exports = (userdb, postdb) => {
     const {firstName, lastName, password} = req.body
     // Edit user profile in the database and return user back
     const templateVars = {} // fill that from database
-    userdb.updateUser('userID', firstName, lastName, password, (err, result) => {
+    userdb.updateUser(userID, firstName, lastName, password, (err, result) => {
       if (result === 0) {
         res.render('user_profile', {error: "Unable to update profile"})
       } else {
