@@ -68,8 +68,9 @@ app.get("/", mid.softCheck, (req, res) => {
     templateVars.tags = Array.from([...new Set(tags)])
     templateVars.posts = result
     templateVars.postLikes = result1
-    if(res.locals.loggedin) {
+    if(res.locals.loggedin && req.cookies["_owner"]["first_name"]) {
       templateVars.user = res.locals.loggedin
+      templateVars.userName = req.cookies["_owner"]["first_name"]
     }
     res.render("index", templateVars);
   })

@@ -36,7 +36,7 @@ module.exports = (userdb) => {
 
   // Login
   router.post("/login", (req, res) => {
-    let {email, password} = req.body
+    let {first_name, last_name, email, password} = req.body
     email = utils.generateMD5Hash(email)
     // Call database to get user
     userdb.getUser(email, (err, result) => {
@@ -60,10 +60,6 @@ module.exports = (userdb) => {
   });
 
   router.post("/register", (req, res) => {
-    //-----//
-    // To Nikki: Please have the names of fields in your Register form as below
-    // email, password, firstName, lastName
-    //-----//
     let {email, password, first_name, last_name} = req.body
     email = utils.generateMD5Hash(email)
     userdb.saveUser({
