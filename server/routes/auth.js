@@ -36,7 +36,7 @@ module.exports = (userdb) => {
 
   // Login
   router.post("/login", (req, res) => {
-    let {first_name, last_name, email, password} = req.body
+    let {email, password} = req.body
     email = utils.generateMD5Hash(email)
     // Call database to get user
     userdb.getUser(email, (err, result) => {
