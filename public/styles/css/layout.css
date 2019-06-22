@@ -21,7 +21,7 @@ h3 {
   border-radius: 0.15rem;
 }
 
-.header a {
+.header p a {
   font-size: 1.5em;
   font-weight: bold;
 }
@@ -170,6 +170,13 @@ h3 {
   .header form {
     display: flex;
     flex-direction: column;
+    width: 100%;
+  }
+  .header form p {
+    text-align: center;
+  }
+  .header form .btn {
+    margin-bottom: 0.2em;
   }
   .nav {
     width: 100%;
@@ -177,6 +184,16 @@ h3 {
   }
   .nav a {
     text-align: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .header form p {
+    display: block;
+    margin-right: 0;
+  }
+  .header form button {
+    float: right;
   }
 }
 

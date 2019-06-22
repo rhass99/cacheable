@@ -20,6 +20,10 @@ module.exports = (userdb, postdb) => {
       templateVars.likedPosts = result2
       templateVars.postLikes = result3
       console.log(templateVars)
+      //@ Rami: I have to pass this to display it in the header as the logged in user
+      templateVars.user = true
+      templateVars.resources = true
+      templateVars.userName = req.cookies["_owner"]["first_name"]
       res.render('user_resources', templateVars)
     })
     //---//

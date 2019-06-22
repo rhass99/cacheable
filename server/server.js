@@ -71,6 +71,8 @@ app.get("/", mid.softCheck, (req, res) => {
     if(res.locals.loggedin && req.cookies["_owner"]["first_name"]) {
       templateVars.user = res.locals.loggedin
       templateVars.userName = req.cookies["_owner"]["first_name"]
+      // I need this to redirect the user to myresources
+      templateVars.userEmail = req.cookies["_owner"]["email"]
     }
     res.render("index", templateVars);
   })

@@ -9,6 +9,9 @@
     <% if(locals.user) { %>
       <form method="POST" action="/auth/logout">
         <p>You are logged in as <%= locals.userName %></p>
+        <% if(!locals.resources) { %>
+        <a href="/users/<%= locals.userEmail %>/resources" class="btn btn-primary">My Resources</a>
+        <% } %>
         <button type="submit" class="btn btn-primary">Logout</button>
       </form>
       <% } else { %>
