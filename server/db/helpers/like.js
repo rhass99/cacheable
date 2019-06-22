@@ -3,24 +3,23 @@ module.exports = function makeLikeHelpers (knex) {
     // Saves like to db, if already exist, delete that like
     saveLike: (newLike, cb) => {
       const post_id = newLike.post_id;
-      const user_id = newLIke.user_id;
+      const user_id = newLike.user_id;
       const existingLike = knex.select().from('like').where('post_id', post_id).andWhere('user_id', user_id);
 
-      if (existingLike.asCallback((err, result) => {
-        if (err) cb(err, null);
-        return result;
-      }).length > 0) {
-        existingLike.del().asCallback((err) => {
-          cb(err, true);
-        })
-      } else {
-        knex('like').insert({
-          post_id: post_id,
-          user_id: user_id
-        }).asCallback((err) => {
-          cb(err, true);
-        });
-      }
+      existingLike.asCallback((err, result) => {
+        if (result.length > 0) {
+          existingLike.del().asCallback((err, result2) => {
+            cb(null, false)
+          })
+        } else {
+          knex('like').insert({
+            post_id: post_id,
+            user_id: user_id
+          }).asCallback((err, result3) => {
+            cb(null, true);
+          });
+        }
+      })
     },
 
     // Get likes from db for one post or user
