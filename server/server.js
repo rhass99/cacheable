@@ -68,7 +68,9 @@ app.get("/", mid.softCheck, (req, res) => {
     templateVars.tags = Array.from([...new Set(tags)])
     templateVars.posts = result
     templateVars.postLikes = result1
-    console.log(templateVars)
+    if(res.locals.loggedin) {
+      templateVars.user = res.locals.loggedin
+    }
     res.render("index", templateVars);
   })
   //-----//
