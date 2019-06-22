@@ -41,6 +41,17 @@ h3 {
     width: 100%;
     padding: 1em;
   }
+  .card-columns {
+    button {
+      border: none;
+      i {
+        font-size: 1.5em;
+      }
+    }
+    button:hover {
+      color: #e60000;
+    }
+  }
 }
 .card-columns {
   padding: 1em;
