@@ -62,15 +62,44 @@ app.use("/auth", authRoutes(authHelpers)); // ok
 
 // Home page
 app.get("/", mid.softCheck, (req, res) => {
+  let templateVars = {}
+  postHelpers.getPostsAndTagsAndLikes((err, result, result1) => {
+    let tags = result.map(x => x.tag_id)
+    templateVars.tags = Array.from([...new Set(tags)])
+    templateVars.posts = result
+    templateVars.postLikes = result1
+    console.log(templateVars)
+    res.render("index", templateVars);
+  })
   //-----//
   // To Nikki:
-  // All posts and all tags will be on res.locals.data
   // Check res.locals.loggedin
   // if (false) -> user not logged in
-  // if (true) -> user logged in, get user Name email and id from cookie
+  // if (true) -> user logged in
+  // templateVars will look like this:
+  /*
+  {
+    tags: [ 'gambling', 'art' ],
+    posts: [
+      {
+        id: 1,
+        user_id: '2b406a620d046edaac9af9c79f1caa9d',
+        url: 'https://google.com',
+        title: 'bla',
+        description: 'bla bla bla',
+        img: null,
+        rating: null,
+        post_id: 'dc79b63e84ba4944d4388e20937a278e',
+        tag_id: 'gambling'
+      }
+    ],
+     postLikes: [
+      { post_id: '348fcfa3c6fae25532a953136643d37d', count: '1' }
+      { post_id: 'be25a4f49e6ac0a187e8c17854cc6b60', count: '1' },
+    ]
+  }
+  */
   //-----//
-  let templateVars = res.locals.data;
-  res.render("index", templateVars);
 });
 
 app.listen(PORT, () => {

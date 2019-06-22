@@ -3,7 +3,7 @@ module.exports = function makeLikeHelpers (knex) {
     // Saves like to db, if already exist, delete that like
     saveLike: (newLike, cb) => {
       const post_id = newLike.post_id;
-      const user_id = newLIke.user_id;
+      const user_id = newLike.user_id;
       const existingLike = knex.select().from('like').where('post_id', post_id).andWhere('user_id', user_id);
 
       if (existingLike.asCallback((err, result) => {

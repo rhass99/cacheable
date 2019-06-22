@@ -6,8 +6,8 @@ module.exports = function makeCommentHelpers (knex) {
         post_id: newComment.post_id,
         user_id: newComment.user_id,
         text: newComment.text
-      }).asCallback((err) => {
-        cb(err, true);
+      }).asCallback((err, result) => {
+        cb(err, result);
       });
     },
 

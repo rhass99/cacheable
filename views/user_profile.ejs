@@ -14,27 +14,27 @@
     <h3>Edit profile</h3>
 
     <form action="/users/:id" method="POST">
-  
+
       <!-- Name -->
       <div class="form-group">
-        <label for="first-name">First name:</label>
-        <input class="form-control" type="text" name="first-name" required>
-        <label for="last-name">Last name:</label>
-        <input class="form-control" type="text" name="last-name" required>
+        <label for="firstName">First name:</label>
+        <input class="form-control" type="text" name="firstName" required>
+        <label for="lastName">Last name:</label>
+        <input class="form-control" type="text" name="lastName" required>
       </div>
-  
+
       <!-- Password -->
       <div class="form-group">
         <label for="password">Password:</label>
         <input class="form-control" type="password" name="password" required>
       </div>
-  
+
       <button type="submit" class="btn btn-primary inline">Submit</button>
-      
+
     </form>
 
   </section>
-  
+
   <footer class="footer mt-auto py-3">
     <!-- include footer -->
     <% include ./partials/_footer %>
