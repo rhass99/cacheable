@@ -87,7 +87,6 @@ app.get("/", mid.softCheck, (req, res) => {
     tags: [ 'gambling', 'art' ],
     posts: [
       {
-        id: 1,
         user_id: '2b406a620d046edaac9af9c79f1caa9d',
         url: 'https://google.com',
         title: 'bla',

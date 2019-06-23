@@ -31,7 +31,7 @@ module.exports = (userdb) => {
   // Logout
   router.post("/logout", (req, res) => {
     res.clearCookie("_owner")
-    res.redirect("../");
+    res.redirect("/");
   });
 
   // Login

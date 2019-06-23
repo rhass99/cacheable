@@ -64,7 +64,7 @@ module.exports = function makePostHelpers (knex) {
     },
 
     getPostsAndTagsAndLikes: (cb) => {
-      knex.from('post').innerJoin('post_tag', 'post.id', 'post_id').asCallback((err, result) => {
+      knex.from('post').leftJoin('post_tag', 'post.id', 'post_id').asCallback((err, result) => {
         knex.select('post_id').count('*').from('like').join('post', 'like.post_id', '=', 'post.id').groupBy('like.post_id').asCallback((err, result1) => {
           cb(err, result, result1);
         });
