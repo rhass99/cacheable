@@ -4,17 +4,30 @@
     <img src="/images/icon.svg" alt="cacheable-logo">
     <a href="/">cacheable</a>
   </p>
-  
-  <% if(!locals.navExists) { %>
-    <% if(locals.user) { %>
-      <form method="POST" action="/auth/logout">
-        <p>You are logged in as <%= locals.userName %></p>
-        <% if(!locals.resources) { %>
-        <a href="/users/<%= locals.userEmail %>/resources" class="btn btn-primary">My Resources</a>
-        <% } %>
-        <button type="submit" class="btn btn-primary">Logout</button>
-      </form>
-      <% } else { %>
+
+  <div class="btn-group">
+
+    <% if(!locals.navExists) { %>
+      <% if(locals.user) { %>
+        <button class="btn btn-outline-primary" type="button">
+          You are logged in as <%= locals.firstName %>
+        </button>
+        <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+    
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <% if(!locals.resources) { %>
+            <a href="/users/<%= locals.userEmail %>/resources" class="dropdown-item">My Resources</a>
+            <% } %>
+          <% if(!locals.profile) { %>
+            <a class="dropdown-item" href="/users/<%= locals.userEmail %>">Profile Settings</a>
+          <% } %>
+            <form method="POST" action="/auth/logout">
+              <button class="dropdown-item" type="submit">Logout</button>
+            </form>
+        </div>
+    <% } else { %>
         <ul class="nav nav-pills">
           <li class="nav-item">
             <a class="nav-link" href="/auth/login">Log In</a>
@@ -23,6 +36,8 @@
             <a class="nav-link active" href="/auth/register">Sign Up</a>
           </li>
         </ul>
+      <% } %>
     <% } %>
-  <% } %>
+
+  </div>
 </nav>
