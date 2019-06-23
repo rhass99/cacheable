@@ -64,7 +64,7 @@ h3 {
 }
 
 .content .card-columns button:hover {
-  border: 1px solid #b3b3b3;
+  /* border: 1px solid $border-color; */
 }
 
 .content .card-columns button:focus {

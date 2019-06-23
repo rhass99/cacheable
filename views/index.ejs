@@ -14,51 +14,62 @@
       <nav>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="#">All</a>
+            <a class="nav-link active" href="#" id="all">All</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">HTML</a>
+            <a class="nav-link" href="#" id="html">HTML</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">CSS</a>
+            <a class="nav-link" href="#" id="css">CSS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Javascript</a>
+            <a class="nav-link" href="#" id="js">Javascript</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Ruby</a>
+            <a class="nav-link" href="#" id="ruby">Ruby</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">SQL</a>
+            <a class="nav-link" href="#" id="sql">SQL</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Bootstrap</a>
+            <a class="nav-link" href="#" id="bootstrap">Bootstrap</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">jQuery</a>
+            <a class="nav-link" href="#" id="jquery">jQuery</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">React</a>
+            <a class="nav-link" href="#" id="react">React</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Angular</a>
+            <a class="nav-link" href="#" id="angular">Angular</a>
           </li>
         </ul>
       </nav>
     </section>
     <section class="card-columns">
       <!-- Content tiles -->
-      <% for(post of posts) { %>
-      <article class="card" data-post-id='<%= post.id %>'>
+      <% for (let post of posts) { %>
+      <article class="card" data-post-id="<%= post.id%>" data-tag="">
         <section class="card-body">
-          <h5 class="card-title"><%= post.title %></h5>
-          <p class="card-text text-muted"><%= post.description %>></p>
+          <a href="/posts/<%= post.id%>"><h5 class="card-title"><%= post.title %></h5></a>
+          <p class="card-text text-muted"><%= post.description %></p>
+          <a href="<%= post.url%>"><%= post.url%></a><br>
           <% if (locals.user) { %>
           <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button>
           <% } %>
         </section>
       </article>
       <% } %>
+      <article class="card" data-tag="bootstrap">
+        <section class="card-body">
+          <a href="/posts/1"><h5 class="card-title">Bootstrap 4 Cheatsheet</h5></a>
+          <p class="card-text text-muted">Bootstrap 4 classes</p>
+          <a href="https://hackerthemes.com/bootstrap-cheatsheet/">https://hackerthemes.com/bootstrap-cheatsheet/</a><br>
+          <% if (locals.user) { %>
+          <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button>
+          <% } %>
+        </section>
+      </article>
     </section>
   </main>
 
