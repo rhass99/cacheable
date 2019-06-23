@@ -11,25 +11,42 @@
   </header>
   <section class="box">
 
-    <h3>Edit profile</h3>
+    <h3>Profile Settings</h3>
 
-    <form action="/users/:id" method="POST">
+    <% if(locals.error) { %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong><%= locals.error %></strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    <% } %>
+
+    <% if(locals.alert) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong><%= locals.alert %></strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    <% } %>
+    <form action="/users/<%= locals.user %>" method="POST">
 
       <!-- Name -->
       <div class="form-group">
         <label for="firstName">First name:</label>
-        <input class="form-control" type="text" name="firstName" required>
+        <input class="form-control" type="text" value="<%= locals.firstName %>" name="firstName" required>
         <label for="lastName">Last name:</label>
-        <input class="form-control" type="text" name="lastName" required>
+        <input class="form-control" type="text" value="<%= locals.lastName %>" name="lastName" required>
       </div>
 
       <!-- Password -->
       <div class="form-group">
         <label for="password">Password:</label>
-        <input class="form-control" type="password" name="password" required>
+        <input class="form-control" type="password" value="<%= locals.password %>" name="password" required>
       </div>
 
-      <button type="submit" class="btn btn-primary inline">Submit</button>
+      <button type="submit" class="btn btn-primary inline">Save</button>
 
     </form>
 
