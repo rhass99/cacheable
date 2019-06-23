@@ -48,15 +48,17 @@
     </section>
     <section class="card-columns">
       <!-- Content tiles -->
+      <% for (let post of posts) { %>
       <article class="card">
         <section class="card-body">
-          <h5 class="card-title">Resource Title</h5>
-          <p class="card-text text-muted">Resource description</p>
+          <h5 class="card-title"><%= post.title%></h5>
+          <p class="card-text text-muted"><%= post.description%></p>
           <% if (locals.user) { %>
           <button><i class="fa fa-heart" aria-hidden="true"></i></button>
           <% } %>
         </section>
       </article>
+      <% } %>
 
       <article class="card">
         <section class="card-body">
