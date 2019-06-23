@@ -22,19 +22,14 @@ module.exports = function makePostHelpers (knex) {
     // To get all posts for specific user
     // getPosts(email, 'user_id', CALLBACK)
     getPosts: (value, property, cb) => {
-      if (property) {
+      if (property && property !== 'tag_id') {
         knex.select().from('post').where(property, value).asCallback((err, result) => {
           cb(err, result);
         });
-      } else if (property === "tag_id") {
-        const output = [];
-        knex.select().from('post_tag').where('tag_id', value).asCallback((err, result) => {
-          result.forEach((post_tag) => {
-            knex.select().from('post').where('id', post_tag.post_id).asCallback((err, result) => {
-              if (err) cb(err, null);
-              output.push(result[0]);
-            }).then(() => cb(err, output));
-          })
+      } else if (property === 'tag_id') {
+        knex.select().from('post').innerJoin('post_tag', 'post.id', 'post_id').where('post_tag.tag_id', value).asCallback((err, result) => {
+          if (err) cb(err, null);
+          cb(err, result);
         })
       } else {
         knex.select().from('post').limit(value).asCallback((err, result) => {
@@ -70,7 +65,12 @@ module.exports = function makePostHelpers (knex) {
         });
       })
     },
+
+    searchPostsAndTags: (searchTerm, cb) => {
+      knex.from('post').leftJoin('post_tag', 'post.id', 'post_id').where('tag_id', 'like', `%${searchTerm}%`).orWhere('description', 'like', `%${searchTerm}%`).orWhere('url', 'like', `%${searchTerm}%`).asCallback((err, result) => {
+        cb(result)
+      })
+    }
   }
 };
-
 
