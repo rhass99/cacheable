@@ -3,6 +3,9 @@
 const express = require('express');
 const router  = express.Router();
 const utils = require('./utils');
+const request = require('request');
+
+const LINK_API = process.env.API_KEY
 
 module.exports = (postdb) => {
   // Redirect all 'GET /posts to Homepage
@@ -21,10 +24,15 @@ module.exports = (postdb) => {
 
   // Post new Post (should include tag)
   router.post('/', (req, res) => {
-    console.log(req.body)
     const {title, description, url, tag} = req.body
     const {email} = req.cookies._owner
     const post_id = utils.generateMD5Hash(title+description+url)
+
+    // API call for preview link
+    // request({
+    //   method: 'GET',
+    //   uri: `http://api.linkpreview.net/?key=${LINK_API}&q=${url}`
+    // })
     postdb.savePost({
       post_id,
       user_id: email,
