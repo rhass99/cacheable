@@ -54,7 +54,7 @@ module.exports = function makePostHelpers (knex) {
     },
 
     getUserResources: (user_id, cb) => {
-      knex.from('post').where('user_id', user_id).innerJoin('post_tag', 'post.id', 'post_id').asCallback((err, result1) => {
+      knex.from('post').where('user_id', user_id).leftJoin('post_tag', 'post.id', 'post_id').asCallback((err, result1) => {
         knex.select('post_id', 'url', 'title', 'description', 'rating', 'img').from('like').join('post', 'like.post_id', '=', 'post.id').where('like.user_id', user_id).asCallback((err, result2) => {
           knex.select('post_id').count('*').from('like').join('post', 'like.post_id', '=', 'post.id').groupBy('like.post_id').asCallback((err, result3) => {
             cb(err, result1, result2, result3);
