@@ -8,15 +8,15 @@ module.exports = function makeLikeHelpers (knex) {
 
       existingLike.asCallback((err, result) => {
         if (result.length > 0) {
-          existingLike.del().asCallback((err, result2) => {
-            cb(null, false)
+          existingLike.del().asCallback((err) => {
+            cb(err, true)
           })
         } else {
           knex('like').insert({
             post_id: post_id,
             user_id: user_id
-          }).asCallback((err, result3) => {
-            cb(null, true);
+          }).asCallback((err) => {
+            cb(err, true);
           });
         }
       })
