@@ -31,6 +31,7 @@ module.exports = (postdb) => {
       url,
       title,
       description,
+      tag
     }, (err, result) => {
       console.log(result)
     })
