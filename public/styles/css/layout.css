@@ -40,6 +40,10 @@ h3 {
   margin-right: 0.6em;
 }
 
+.header .dropdown {
+  border: none;
+}
+
 .content {
   display: flex;
 }
