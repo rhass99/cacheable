@@ -22,14 +22,6 @@
             <a href="#"><%= post.url%></a>
           </li>
           <% } %>
-          <li class="card">
-            <h5>Resource Title - </h5>
-            <a href="#">Resource link</a>
-          </li>
-          <li class="card">
-            <h5>Resource Title - </h5>
-            <a href="#">Resource link</a>
-          </li>
         </ul>
       </section>
     </article>
@@ -39,14 +31,10 @@
         <ul class="card-columns">
           <% for (let post of likedPosts) { %>
           <li class="card">
-            <h5><%= likedPosts.title%></h5>
-            <a href="#"><%= likedPosts.url%></a>
+            <h5><%= post.title%></h5>
+            <a href="#"><%= post.url%></a>
           </li>
           <% } %>
-          <li class="card">
-            <h5>Resource Title - </h5>
-            <a href="#">Resource link</a>
-          </li>
         </ul>
       </section>
     </article>
