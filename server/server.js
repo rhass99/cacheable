@@ -67,18 +67,22 @@ app.use("/auth", authRoutes(authHelpers));
 // Home page
 app.get("/", mid.softCheck, (req, res) => {
   let templateVars = {}
-  postHelpers.getPostsAndTagsAndLikes((err, result, result1) => {
-    let tags = result.map(x => x.tag_id)
-    templateVars.tags = Array.from([...new Set(tags)])
-    templateVars.posts = result
-    templateVars.postLikes = result1
-    if(res.locals.loggedin && req.cookies["_owner"]["first_name"]) {
-      templateVars.user = res.locals.loggedin
-      templateVars.firstName = req.cookies["_owner"]["first_name"]
-      // I need this to redirect the user to myresources
-      templateVars.userEmail = req.cookies["_owner"]["email"]
-    }
-    res.render("index", templateVars);
+  // postHelpers.getPostsAndTagsAndLikes((err, result, result1) => {
+    // let tags = result.map(x => x.tag_id)
+    // templateVars.tags = Array.from([...new Set(tags)])
+    postHelpers.getPosts(10, null, (err, result) => {
+      templateVars.posts = result;
+      if(res.locals.loggedin && req.cookies["_owner"]["first_name"]) {
+        templateVars.user = res.locals.loggedin
+        templateVars.firstName = req.cookies["_owner"]["first_name"]
+        // I need this to redirect the user to myresources
+        templateVars.userEmail = req.cookies["_owner"]["email"]
+      }
+      res.render("index", templateVars);
+    })
+    
+    // templateVars.postLikes = result1
+    
   })
   //-----//
   // To Nikki:
@@ -108,7 +112,7 @@ app.get("/", mid.softCheck, (req, res) => {
   }
   */
   //-----//
-});
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

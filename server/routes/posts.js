@@ -42,7 +42,7 @@ module.exports = (postdb, tagdb) => {
       user_id: email,
       url,
       title,
-      description,
+      description
     }, (err, result) => {
       if (!err && Array.isArray(tag)) {
         console.log("been here", tag)
