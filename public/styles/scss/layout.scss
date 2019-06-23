@@ -54,13 +54,24 @@ h3 {
   }
   .card-columns {
     button {
-      border: none;
+      padding: 0;
+      border-radius: 3px;
       i {
-        font-size: 1.5em;
+        color: #e60000;
+        margin: 0.5em;
       }
     }
     button:hover {
-      color: #e60000;
+      border: 1px solid $border-color;
+    }
+    button:focus {
+      outline: 0;
+    }
+    .liked {
+      background-color: #e60000;
+      i {
+        color: white;
+      }
     }
   }
 }

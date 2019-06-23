@@ -15,11 +15,12 @@ module.exports = (postdb, tagdb) => {
 
   // Get create new post form
   router.get('/new', (req, res) => {
-    //---//
-    // To Nikki:
-    // Render new_post ejs file with form for new input
-    //----//
-    res.render('post_new')
+    if(Object.keys(req.cookies).length === 0) {
+      return res.redirect('/auth/login')
+    }
+    let cookieEmail = req.cookies._owner.email;
+    let cookieName = req.cookies._owner.first_name;
+    res.render('post_new', {user: cookieEmail, firstName: cookieName})
   })
 
   // Post new Post (should include tag)
