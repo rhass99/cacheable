@@ -16,10 +16,12 @@
       <h4>Added by me:</h4>
       <section>
         <ul class="card-columns">
+          <% for (let post of myPosts) { %>
           <li class="card">
-            <h5>Resource Title - </h5>
-            <a href="#">Resource link</a>
+            <h5><%= post.title%></h5>
+            <a href="#"><%= post.url%></a>
           </li>
+          <% } %>
           <li class="card">
             <h5>Resource Title - </h5>
             <a href="#">Resource link</a>
@@ -35,10 +37,12 @@
       <h4>Liked by me:</h4>
       <section>
         <ul class="card-columns">
+          <% for (let post of likedPosts) { %>
           <li class="card">
-            <h5>Resource Title - </h5>
-            <a href="#">Resource link</a>
+            <h5><%= likedPosts.title%></h5>
+            <a href="#"><%= likedPosts.url%></a>
           </li>
+          <% } %>
           <li class="card">
             <h5>Resource Title - </h5>
             <a href="#">Resource link</a>
