@@ -67,6 +67,10 @@ h3 {
   border: 1px solid #b3b3b3;
 }
 
+.content .card-columns button:focus {
+  outline: 0;
+}
+
 .content .card-columns .liked {
   background-color: #e60000;
 }

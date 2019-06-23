@@ -64,6 +64,9 @@ h3 {
     button:hover {
       border: 1px solid $border-color;
     }
+    button:focus {
+      outline: 0;
+    }
     .liked {
       background-color: #e60000;
       i {
