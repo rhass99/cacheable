@@ -174,12 +174,15 @@ h3 {
 @media (max-width: 500px){
   .header {
     form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       p {
         display: block;
         margin-right: 0;
       }
       button {
-        float: right;
+        margin-top: 0.2em;
       }
     }
   }
