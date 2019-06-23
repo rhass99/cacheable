@@ -48,11 +48,11 @@
     </section>
     <section class="card-columns">
       <!-- Content tiles -->
-      <% for (let post of posts) { %>
-      <article class="card">
+      <% for(post of posts) { %>
+      <article class="card" data-post-id='<%= post.id %>'>
         <section class="card-body">
-          <h5 class="card-title"><%= post.title%></h5>
-          <p class="card-text text-muted"><%= post.description%></p>
+          <h5 class="card-title"><%= post.title %>></h5>
+          <p class="card-text text-muted"><%= post.description %>></p>
           <% if (locals.user) { %>
           <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button>
           <% } %>
