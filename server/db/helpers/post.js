@@ -70,7 +70,7 @@ module.exports = function makePostHelpers (knex) {
       knex.from('post').leftJoin('post_tag', 'post.id', 'post_id').where('tag_id', 'like', `%${searchTerm}%`).orWhere('description', 'like', `%${searchTerm}%`).orWhere('url', 'like', `%${searchTerm}%`).asCallback((err, result) => {
         cb(result)
       })
-    }
+    },
   }
 };
 

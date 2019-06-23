@@ -7,23 +7,13 @@ module.exports = function makeTagHelpers (knex) {
           post_id: newTag.post_id,
           tag_id: newTag.tag_id
         }).then(() => {
-          knex.select().from('tag').where('id', newTag.tag_id).asCallback((err, result) => {
-            if (err) cb(err, true);
-            if (result.length === 0) {
-              knex('tag').insert({
-                id: newTag.tag_id
-              }).asCallback((err) => {
-                cb(err, true);
-              })
-            }
+          knex('tag').insert({
+            id: newTag.tag_id
+          }).asCallback((err) => {
+            cb(err, true);
           })
         })
       })
-      knex('tag').insert({
-        id: newTag
-      }).asCallback((err) => {
-        cb(err, true);
-      });
     },
 
     // Get tags from db (all or by post)

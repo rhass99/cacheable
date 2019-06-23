@@ -7,7 +7,7 @@ const request = require('request');
 
 const LINK_API = process.env.API_KEY
 
-module.exports = (postdb) => {
+module.exports = (postdb, tagdb) => {
   // Redirect all 'GET /posts to Homepage
   router.get('/', (req, res) => {
     res.redirect('../')
@@ -24,24 +24,33 @@ module.exports = (postdb) => {
 
   // Post new Post (should include tag)
   router.post('/', (req, res) => {
-    const {title, description, url, tag} = req.body
+    let tagmap = ''
+    let {title, description, url, tag} = req.body
     const {email} = req.cookies._owner
     const post_id = utils.generateMD5Hash(title+description+url)
 
-    // API call for preview link
-    // request({
-    //   method: 'GET',
-    //   uri: `http://api.linkpreview.net/?key=${LINK_API}&q=${url}`
-    // })
+    if (tag.trim().length !== 0) {
+      tag = tag.trim().split(",")
+      tagmap = tag.map(tag => ({post_id: post_id, tag_id: tag}))
+    } else {
+      tag = ''
+    }
+
     postdb.savePost({
       post_id,
       user_id: email,
       url,
       title,
       description,
-      tag
     }, (err, result) => {
-      console.log(result)
+      if (!err && Array.isArray(tag)) {
+        console.log("been here", tag)
+        tagdb.saveTag(tagmap, (err, result) => {
+          console.log(err)
+          console.log(result)
+        })
+      }
+      console.log("postresult", err)
     })
     //---//
     // To Nikki:
