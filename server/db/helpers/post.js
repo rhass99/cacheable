@@ -27,10 +27,10 @@ module.exports = function makePostHelpers (knex) {
           cb(err, result);
         });
       } else if (property === 'tag_id') {
-        knex.select().from('post').join('post_tag', 'post.id', '=', 'post_tag.post_id').where('post_tag.tag_id', value).asCallback((err, result) => {
+        knex.select().from('post').innerJoin('post_tag', 'post.id', 'post_id').where('post_tag.tag_id', value).asCallback((err, result) => {
           if (err) cb(err, null);
           cb(err, result);
-        });
+        })
       } else {
         knex.select().from('post').limit(value).asCallback((err, result) => {
           cb(err, result);
@@ -65,7 +65,12 @@ module.exports = function makePostHelpers (knex) {
         });
       })
     },
+
+    searchPostsAndTags: (searchTerm, cb) => {
+      knex.from('post').leftJoin('post_tag', 'post.id', 'post_id').where('tag_id', 'like', `%${searchTerm}%`).orWhere('description', 'like', `%${searchTerm}%`).orWhere('url', 'like', `%${searchTerm}%`).asCallback((err, result) => {
+        cb(result)
+      })
+    }
   }
 };
-
 
