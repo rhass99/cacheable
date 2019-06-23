@@ -10,6 +10,7 @@ const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
 const path        = require('path');
+const querystring = require('querystring');
 
 const knexConfig  = require("../knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -33,6 +34,7 @@ const postsRoutes = require("./routes/posts");
 const likesRoutes = require("./routes/likes");
 const commentsRoutes = require("./routes/comments");
 const authRoutes = require("./routes/auth");
+const apipostsRoutes = require("./routes/apiposts");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -58,7 +60,8 @@ app.use("/users", usersRoutes(userHelpers, postHelpers));
 app.use("/posts", postsRoutes(postHelpers));
 app.use("/api/comments", commentsRoutes(commentHelpers));
 app.use("/api/likes", likesRoutes(likeHelpers));
-app.use("/auth", authRoutes(authHelpers)); // ok
+app.use("/api/posts", apipostsRoutes(postHelpers));
+app.use("/auth", authRoutes(authHelpers));
 
 // Home page
 app.get("/", mid.softCheck, (req, res) => {
