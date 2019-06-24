@@ -64,11 +64,37 @@ h3 {
     button:focus {
       outline: 0;
     }
+    .foot-card {
+      display: flex;
+      justify-content: space-between;
+    }
     .liked {
       background-color: #e60000;
       i {
         color: white;
       }
+    }
+    .rating {
+      unicode-bidi: bidi-override;
+      direction: rtl;
+      text-align: right;
+    }
+    .rating > span {
+      display: inline-block;
+      position: relative;
+      width: 1.1em;
+      font-size: 1.5em;
+    }
+    .rating > span:hover,
+    .rating > span:hover ~ span {
+      color: transparent;
+    }
+    .rating > span:hover:before,
+    .rating > span:hover ~ span:before {
+       content: "\2605";
+       position: absolute;
+       left: 0; 
+       color: gold;
     }
   }
 }
@@ -116,6 +142,10 @@ h3 {
   margin-top: 2em;
   .card-columns {
     margin-bottom: 0;
+    column-count: 2;
+    .card {
+        padding: 1em;
+    }
   }
   h4 {
     border-bottom: 1px solid $border-color;
@@ -144,10 +174,16 @@ h3 {
     height: 2.625em;
     width: 2.8em;
   }
+  button:focus {
+    outline: 0;
+  }
   input {
     border-radius: 5px;
     width: 60%;
     height: 2.625em;
+  }
+  input:focus {
+    outline: 0;
   }
 }
 #register {
@@ -255,6 +291,13 @@ h3 {
         flex-direction: row!important;
       }
     }
+    .card-columns {
+      .foot-card {
+        .rating > span{
+          font-size: 1.2em;
+        }
+      }
+    }
   }
   .header {
     margin-bottom: 0;
@@ -263,6 +306,15 @@ h3 {
   }
   .search {
     justify-content: center;
+  }
+}
+@media (max-width: $breakpoint-laptop) {
+  .foot-card {
+    flex-direction: column;
+    justify-content: center;
+    .rating {
+      margin: 0 auto;
+    }
   }
 }
 @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-laptop) {

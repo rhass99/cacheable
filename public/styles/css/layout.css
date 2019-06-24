@@ -67,12 +67,43 @@ h3 {
   outline: 0;
 }
 
+.content .card-columns .foot-card {
+  display: flex;
+  justify-content: space-between;
+}
+
 .content .card-columns .liked {
   background-color: #e60000;
 }
 
 .content .card-columns .liked i {
   color: white;
+}
+
+.content .card-columns .rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: right;
+}
+
+.content .card-columns .rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  font-size: 1.5em;
+}
+
+.content .card-columns .rating > span:hover,
+.content .card-columns .rating > span:hover ~ span {
+  color: transparent;
+}
+
+.content .card-columns .rating > span:hover:before,
+.content .card-columns .rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
+  left: 0;
+  color: gold;
 }
 
 .card-columns {
@@ -130,6 +161,11 @@ h3 {
 
 .resources .card-columns {
   margin-bottom: 0;
+  column-count: 2;
+}
+
+.resources .card-columns .card {
+  padding: 1em;
 }
 
 .resources h4 {
@@ -166,10 +202,18 @@ h3 {
   width: 2.8em;
 }
 
+.search button:focus {
+  outline: 0;
+}
+
 .search input {
   border-radius: 5px;
   width: 60%;
   height: 2.625em;
+}
+
+.search input:focus {
+  outline: 0;
 }
 
 #register {
@@ -281,6 +325,9 @@ h3 {
   .content .side-nav .flex-column {
     flex-direction: row !important;
   }
+  .content .card-columns .foot-card .rating > span {
+    font-size: 1.2em;
+  }
   .header {
     margin-bottom: 0;
     flex-direction: column;
@@ -288,6 +335,16 @@ h3 {
   }
   .search {
     justify-content: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .foot-card {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .foot-card .rating {
+    margin: 0 auto;
   }
 }
 

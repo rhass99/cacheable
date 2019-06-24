@@ -59,25 +59,12 @@
             <a href="<%= post.url %>" target="_blank"><h5 class="card-title"><%= post.title %></h5></a>
             <p class="card-text text-muted"><%= post.description %></p>
             <% if (locals.user) { %>
-            <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button><br>
-            
-            
-            
-            <span class="rate1">
-            <span class="fa fa-star"></span>
-            </span>
-            <span class="rate2">
-            <span class="fa fa-star"></span>
-            </span>
-            <span class="rate3">
-            <span class="fa fa-star"></span>
-            </span>
-            <span class="rate4">
-            <span class="fa fa-star"></span>
-            </span>
-            <span class="rate5">
-            <span class="fa fa-star"></span>
-            </span>
+            <div class="foot-card">
+              <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button><br>
+              <div class="rating">
+                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+              </div>
+            </div>
             <% } %>
           </section>
         </article>
@@ -87,12 +74,12 @@
             <a href="https://hackerthemes.com/bootstrap-cheatsheet/" target="_blank"><h5 class="card-title">Bootstrap 4 Cheatsheet</h5></a>
             <p class="card-text text-muted">Bootstrap 4 classes</p>
             <% if (locals.user) { %>
-            <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button><br>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
+              <div class="foot-card">
+                <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button><br>
+                <div class="rating">
+                  <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                </div>
+              </div>
             <% } %>
           </section>
         </article>
