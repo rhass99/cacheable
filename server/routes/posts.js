@@ -62,10 +62,19 @@ module.exports = (postdb, tagdb) => {
 
   // Get post by id
   router.get('/:id', (req, res) => {
+    if(Object.keys(req.cookies).length === 0) {
+      return res.redirect('/')
+    }
     let templateVars = {}
     postdb.getPosts(req.params.id,'id', (err, result) => {
-      templateVars = result[0]
-      console.log(templateVars)
+      templateVars.firstName = req.cookies._owner.first_name
+      templateVars.user = result[0].user_id
+      templateVars.url = result[0].url
+      templateVars.title = result[0].title
+      templateVars.description = result[0].description 
+      templateVars.img = result[0].img
+      templateVars.rating = result[0].rating
+      console.log(result[0])
       res.render('post_show', templateVars)
     })
     //---//

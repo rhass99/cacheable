@@ -108,6 +108,23 @@ h3 {
   margin-top: 1.5em;
 }
 
+.postbox {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+  content: "";
+  background-color: transparent;
+}
+
 .footer {
   width: 100%;
   text-align: center;

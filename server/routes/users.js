@@ -28,7 +28,6 @@ module.exports = (userdb, postdb) => {
 
   //Renders the user profile settings
   router.get('/:id', mid.authenticate, (req, res) => {
-    console.log(req.cookies)
     const userID = req.cookies._owner.email;
     // Query database for user profile by id
     let templateVars = {} // fill that from database
@@ -57,31 +56,20 @@ module.exports = (userdb, postdb) => {
   router.post('/:id', mid.authenticate, (req, res) => {
     const userID = req.cookies._owner.email;
     const {firstName, lastName, password} = req.body
+    console.log(userID);
     // Edit user profile in the database and return user back
     const templateVars = {} // fill that from database
     userdb.updateUser(userID, firstName, lastName, password, (err, result) => {
       if (result === 0) {
-        res.render('user_profile', {error: "Unable to update profile"})
+        return res.render('user_profile', {error: "Unable to update profile"})
       } else {
-        templateVars.userID = userID;
+        templateVars.user = userID;
+        templateVars.userEmail = userID;
         templateVars.firstName = firstName;
         templateVars.lastName = lastName;
         res.render('user_profile', {templateVars})
       }
     })
-    //---//
-    // To Nikki:
-    // Render show_user_profile ejs file with template vars
-    /* Template vars will look like this if there is no error
-    {
-      userID: "userid",
-      firstName: "name",
-      lastName: "name",
-      error: ""
-    }
-    if there is error then only you will get this {error: "Unable to update profile"}
-    */
-    //----//
   });
 
   return router;
