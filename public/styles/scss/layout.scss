@@ -281,6 +281,13 @@ h3 {
         flex-direction: row!important;
       }
     }
+    .card-columns {
+      .foot-card {
+        .rating > span{
+          font-size: 1.2em;
+        }
+      }
+    }
   }
   .header {
     margin-bottom: 0;
@@ -289,6 +296,15 @@ h3 {
   }
   .search {
     justify-content: center;
+  }
+}
+@media (max-width: $breakpoint-laptop) {
+  .foot-card {
+    flex-direction: column;
+    justify-content: center;
+    .rating {
+      margin: 0 auto;
+    }
   }
 }
 @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-laptop) {

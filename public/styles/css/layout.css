@@ -312,6 +312,9 @@ h3 {
   .content .side-nav .flex-column {
     flex-direction: row !important;
   }
+  .content .card-columns .foot-card .rating > span {
+    font-size: 1.2em;
+  }
   .header {
     margin-bottom: 0;
     flex-direction: column;
@@ -319,6 +322,16 @@ h3 {
   }
   .search {
     justify-content: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .foot-card {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .foot-card .rating {
+    margin: 0 auto;
   }
 }
 
