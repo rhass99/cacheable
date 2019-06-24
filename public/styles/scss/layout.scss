@@ -64,11 +64,37 @@ h3 {
     button:focus {
       outline: 0;
     }
+    .foot-card {
+      display: flex;
+      justify-content: space-between;
+    }
     .liked {
       background-color: #e60000;
       i {
         color: white;
       }
+    }
+    .rating {
+      unicode-bidi: bidi-override;
+      direction: rtl;
+      text-align: right;
+    }
+    .rating > span {
+      display: inline-block;
+      position: relative;
+      width: 1.1em;
+      font-size: 1.5em;
+    }
+    .rating > span:hover,
+    .rating > span:hover ~ span {
+      color: transparent;
+    }
+    .rating > span:hover:before,
+    .rating > span:hover ~ span:before {
+       content: "\2605";
+       position: absolute;
+       left: 0; 
+       color: gold;
     }
   }
 }

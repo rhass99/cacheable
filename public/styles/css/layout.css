@@ -67,12 +67,43 @@ h3 {
   outline: 0;
 }
 
+.content .card-columns .foot-card {
+  display: flex;
+  justify-content: space-between;
+}
+
 .content .card-columns .liked {
   background-color: #e60000;
 }
 
 .content .card-columns .liked i {
   color: white;
+}
+
+.content .card-columns .rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: right;
+}
+
+.content .card-columns .rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  font-size: 1.5em;
+}
+
+.content .card-columns .rating > span:hover,
+.content .card-columns .rating > span:hover ~ span {
+  color: transparent;
+}
+
+.content .card-columns .rating > span:hover:before,
+.content .card-columns .rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
+  left: 0;
+  color: gold;
 }
 
 .card-columns {
