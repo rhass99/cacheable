@@ -14,14 +14,21 @@
     <p><a href="<%= locals.url %>"><%= locals.url %></a></p>
     <p><%= locals.description %></p>
     <!-- insert tags here -->
+    <div class="margin-top">
+      <p class="text-muted">Comments:</p>
+      <ul id="comments">
+        <li>This is such a cool resource! - <span>Billy J</span></li>
+      </ul>
+      <h4>Add a comment</h4>
+      <div class="form-group">
+        <textarea class="form-control" type="text" name="comment" id="comment" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Post comment</button>
+    </div>
   </section>
 
-  <section class="box">
-    <h4>Add a comment</h4>
-      <div class="form-group">
-          <input class="form-control" type="text" name="comment" id="comment" required>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Post comment</button>
+  <section>
+
   </section>
   
   <footer class="footer mt-auto py-3">
