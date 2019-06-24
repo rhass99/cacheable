@@ -142,6 +142,10 @@ h3 {
   margin-top: 2em;
   .card-columns {
     margin-bottom: 0;
+    column-count: 2;
+    .card {
+        padding: 1em;
+    }
   }
   h4 {
     border-bottom: 1px solid $border-color;

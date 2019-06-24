@@ -161,6 +161,11 @@ h3 {
 
 .resources .card-columns {
   margin-bottom: 0;
+  column-count: 2;
+}
+
+.resources .card-columns .card {
+  padding: 1em;
 }
 
 .resources h4 {
