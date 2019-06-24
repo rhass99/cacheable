@@ -51,20 +51,18 @@
       <% for (let post of posts) { %>
       <article class="card" data-post-id="<%= post.id%>" data-tag="">
         <section class="card-body">
-          <h5 class="card-title"><%= post.title %></h5>
+          <a href="<%= post.url %>" target="_blank"><h5 class="card-title"><%= post.title %></h5></a>
           <p class="card-text text-muted"><%= post.description %></p>
           <% if (locals.user) { %>
           <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button>
           <% } %>
-          <a href="/posts/<%= post.id %>" target="_blank" class="stretched-link"></a>
         </section>
       </article>
       <% } %>
       <article class="card" data-tag="bootstrap">
         <section class="card-body">
-          <a href="/posts/1"><h5 class="card-title">Bootstrap 4 Cheatsheet</h5></a>
+          <a href="https://hackerthemes.com/bootstrap-cheatsheet/" target="_blank"><h5 class="card-title">Bootstrap 4 Cheatsheet</h5></a>
           <p class="card-text text-muted">Bootstrap 4 classes</p>
-          <a href="https://hackerthemes.com/bootstrap-cheatsheet/">https://hackerthemes.com/bootstrap-cheatsheet/</a><br>
           <% if (locals.user) { %>
           <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button>
           <% } %>
