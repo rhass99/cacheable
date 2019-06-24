@@ -51,12 +51,12 @@
       <% for (let post of posts) { %>
       <article class="card" data-post-id="<%= post.id%>" data-tag="">
         <section class="card-body">
-          <a href="/posts/<%= post.id%>"><h5 class="card-title"><%= post.title %></h5></a>
+          <h5 class="card-title"><%= post.title %></h5>
           <p class="card-text text-muted"><%= post.description %></p>
-          <a href="<%= post.url%>"><%= post.url%></a><br>
           <% if (locals.user) { %>
           <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button>
           <% } %>
+          <a href="/posts/<%= post.id %>" target="_blank" class="stretched-link"></a>
         </section>
       </article>
       <% } %>
