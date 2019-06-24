@@ -9,6 +9,7 @@ $( document ).ready(function() {
     if (searchString) {
       $(`article`).hide();
       $(`:contains(${searchString})`).show();
+      $('#search_string').val("");
     }
   })
 
