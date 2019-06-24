@@ -63,10 +63,6 @@ h3 {
   margin: 0.5em;
 }
 
-.content .card-columns button:hover {
-  /* border: 1px solid $border-color; */
-}
-
 .content .card-columns button:focus {
   outline: 0;
 }
@@ -113,18 +109,6 @@ h3 {
   margin: 0 auto;
 }
 
-.stretched-link::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  pointer-events: auto;
-  content: "";
-  background-color: transparent;
-}
-
 .footer {
   width: 100%;
   text-align: center;
@@ -164,6 +148,10 @@ h3 {
 
 .resources ul li h5 {
   display: inline-block;
+}
+
+.checked {
+  color: orange;
 }
 
 @media (min-width: 425px) {
