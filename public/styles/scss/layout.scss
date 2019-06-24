@@ -160,6 +160,9 @@ h3 {
       padding: 2em;
     }
   }
+  li.card {
+    width: 103% !important;
+  }
 }
 @media (max-width: $breakpoint-phone) {
   .card-columns {

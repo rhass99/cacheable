@@ -22,7 +22,11 @@ module.exports = (userdb, postdb) => {
       templateVars.user = true
       templateVars.resources = true
       templateVars.firstName = req.cookies["_owner"]["first_name"]
-      res.render('user_resources', templateVars)
+      postdb.getPosts(userID, 'user_id', (err, result) => {
+        templateVars.myPosts = result;
+        res.render('user_resources', templateVars)
+      })
+     
     })
   });
 

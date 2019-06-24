@@ -6,8 +6,10 @@ $( document ).ready(function() {
 
   $('#search_button').on('click', function(e) {
     let searchString = $('#search_string').val();
-    $(`article`).hide();
-    $(`:contains(${searchString})`).show();
+    if (searchString) {
+      $(`article`).hide();
+      $(`:contains(${searchString})`).show();
+    }
   })
 
   $('.rate1').on ('click', function (e) {

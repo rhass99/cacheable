@@ -18,8 +18,8 @@
         <ul class="card-columns">
           <% for (let post of myPosts) { %>
           <li class="card" data-post-id="<%= post.id%>">
-            <h5><%= post.title%></h5>
-            <a href="#"><%= post.url%></a>
+              <a href="/posts/<%= post.id %>"><h5><%= post.title%></h5></a>
+            <p class="card-text"><a href="#"><%= post.url%></a></p>
           </li>
           <% } %>
         </ul>
@@ -32,7 +32,7 @@
           <% for (let post of likedPosts) { %>
           <li class="card" data-post-id="<%= post.id%>">
             <h5><%= post.title%></h5>
-            <a href="#"><%= post.url%></a>
+            <p class="card-text"><a href="#"><%= post.url%></a></p>
           </li>
           <% } %>
         </ul>
