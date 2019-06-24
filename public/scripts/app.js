@@ -4,6 +4,11 @@ $( document ).ready(function() {
     $(this).toggleClass('liked');
   });
 
+  $(`#comments button`).on('click', function(e) {
+    let comment = $(`#comments textarea`).val();
+    $(`#comments ul`).append($(`<li>${comment} - <span>${$('#comments').data('first')}</span></li>`))
+  })
+
   $('#search_button').on('click', function(e) {
     let searchString = $('#search_string').val();
     if (searchString) {

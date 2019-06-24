@@ -16,7 +16,8 @@
     <!-- insert tags here -->
     <div class="margin-top">
       <p class="text-muted">Comments:</p>
-      <ul id="comments">
+      <div id="comments" data-first="<%= locals.firstName %>">
+      <ul>
         <li>This is such a cool resource! - <span>Billy J</span></li>
       </ul>
       <h4>Add a comment</h4>
@@ -24,6 +25,7 @@
         <textarea class="form-control" type="text" name="comment" id="comment" required></textarea>
       </div>
       <button type="submit" class="btn btn-primary btn-block">Post comment</button>
+      </div>
     </div>
   </section>
 
