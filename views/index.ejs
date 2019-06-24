@@ -9,90 +9,95 @@
     <!-- include header partial -->
     <% include ./partials/_header %>
   </header>
-  <main class="content">
-    <section class="side-nav">
-      <nav>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#" id="all">All</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="html">HTML</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="css">CSS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="js">Javascript</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="ruby">Ruby</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="sql">SQL</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="bootstrap">Bootstrap</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="jquery">jQuery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="react">React</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="angular">Angular</a>
-          </li>
-        </ul>
-      </nav>
+  <main>
+    <section class="search">
+      <input id="search_string" type="text" name="search_string" type="submit" placeholder="Search Everything...">
+      <button id="search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
     </section>
-    <section class="card-columns">
-      <!-- Content tiles -->
-      <% for (let post of posts) { %>
-      <article class="card" data-post-id="<%= post.id%>" data-tag="">
-        <section class="card-body">
-          <a href="<%= post.url %>" target="_blank"><h5 class="card-title"><%= post.title %></h5></a>
-          <p class="card-text text-muted"><%= post.description %></p>
-          <% if (locals.user) { %>
-          <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button><br>
-          
-          
-          
-          <span class="rate1">
-          <span class="fa fa-star"></span>
-          </span>
-          <span class="rate2">
-          <span class="fa fa-star"></span>
-          </span>
-          <span class="rate3">
-          <span class="fa fa-star"></span>
-          </span>
-          <span class="rate4">
-          <span class="fa fa-star"></span>
-          </span>
-          <span class="rate5">
-          <span class="fa fa-star"></span>
-          </span>
-          <% } %>
-        </section>
-      </article>
-      <% } %>
-      <article class="card" data-tag="bootstrap">
-        <section class="card-body">
-          <a href="https://hackerthemes.com/bootstrap-cheatsheet/" target="_blank"><h5 class="card-title">Bootstrap 4 Cheatsheet</h5></a>
-          <p class="card-text text-muted">Bootstrap 4 classes</p>
-          <% if (locals.user) { %>
-          <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button><br>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span>
-          <% } %>
-        </section>
-      </article>
-    </section>
-    <section class="search"><input id="search_string" type="text" name="search_string"><input type="submit" value="Search" id="search_button"></section>
+    <div class="content">
+      <section class="side-nav">
+        <nav>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" id="all">All</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="html">HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="css">CSS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="js">Javascript</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="ruby">Ruby</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="sql">SQL</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="bootstrap">Bootstrap</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="jquery">jQuery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="react">React</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="angular">Angular</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+      <section class="card-columns">
+        <!-- Content tiles -->
+        <% for (let post of posts) { %>
+        <article class="card" data-post-id="<%= post.id%>" data-tag="">
+          <section class="card-body">
+            <a href="<%= post.url %>" target="_blank"><h5 class="card-title"><%= post.title %></h5></a>
+            <p class="card-text text-muted"><%= post.description %></p>
+            <% if (locals.user) { %>
+            <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button><br>
+            
+            
+            
+            <span class="rate1">
+            <span class="fa fa-star"></span>
+            </span>
+            <span class="rate2">
+            <span class="fa fa-star"></span>
+            </span>
+            <span class="rate3">
+            <span class="fa fa-star"></span>
+            </span>
+            <span class="rate4">
+            <span class="fa fa-star"></span>
+            </span>
+            <span class="rate5">
+            <span class="fa fa-star"></span>
+            </span>
+            <% } %>
+          </section>
+        </article>
+        <% } %>
+        <article class="card" data-tag="bootstrap">
+          <section class="card-body">
+            <a href="https://hackerthemes.com/bootstrap-cheatsheet/" target="_blank"><h5 class="card-title">Bootstrap 4 Cheatsheet</h5></a>
+            <p class="card-text text-muted">Bootstrap 4 classes</p>
+            <% if (locals.user) { %>
+            <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button><br>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <% } %>
+          </section>
+        </article>
+      </section>
+    </div>
   </main>
 
   <footer class="footer mt-auto py-3">

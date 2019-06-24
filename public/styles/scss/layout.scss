@@ -5,7 +5,7 @@ $breakpoint-tablet: 768px;
 $breakpoint-laptop: 1024px;
 body {
   font-size: 100%;
-  padding: 0.5em;
+  padding: 0;
 }
 h3 {
   font-size: 2em;
@@ -49,7 +49,7 @@ h3 {
 .content {
   display: flex;
   .side-nav {
-    width: 100%;
+    width: 20vw;
     padding: 1em;
   }
   .card-columns {
@@ -135,6 +135,27 @@ h3 {
 .checked {
   color: orange;
  }
+.search {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 1em;
+  button {
+    border-radius: 5px;
+    height: 2.625em;
+    width: 2.8em;
+  }
+  input {
+    border-radius: 5px;
+    width: 60%;
+    height: 2.625em;
+  }
+}
+#register {
+  margin-bottom: 6em;
+}
+#new-form {
+  margin-bottom: 6em;
+}
 
 //Media Queries
 @media (min-width: $breakpoint-phone) {
@@ -148,6 +169,9 @@ h3 {
   }
   .card {
     width: 300px;
+  }
+  #btn-nav {
+    height: 2.5em;
   }
 }
 @media (min-width: $breakpoint-laptop) {
@@ -172,6 +196,9 @@ h3 {
     flex-direction: column;
     align-items: center;
     padding: 0;
+    .btn-group {
+      width: 100%;
+    }
     form {
       display: flex;
       flex-direction: column;
@@ -189,6 +216,17 @@ h3 {
     flex-direction: column;
     a {
       text-align: center;
+    }
+  }
+  .search {
+    flex-direction: column;
+    padding: 0;
+    margin: 0.2em 0;
+    input {
+      width: 100%;
+    }
+    button {
+      width: 100%;
     }
   }
 }
@@ -211,16 +249,20 @@ h3 {
 @media (max-width: $breakpoint-tablet) {
   .content {
     flex-direction: column;
+    .side-nav {
+      width: 100%;
+      .flex-column {
+        flex-direction: row!important;
+      }
+    }
   }
   .header {
     margin-bottom: 0;
     flex-direction: column;
     align-items: center;
   }
-  .side-nav {
-    .flex-column {
-      flex-direction: row!important;
-    }
+  .search {
+    justify-content: center;
   }
 }
 @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-laptop) {
