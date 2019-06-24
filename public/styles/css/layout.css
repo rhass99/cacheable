@@ -108,6 +108,10 @@ h3 {
   margin-top: 1.5em;
 }
 
+.checked {
+  color: orange;
+}
+
 .footer {
   width: 100%;
   text-align: center;
