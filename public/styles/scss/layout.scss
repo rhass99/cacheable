@@ -87,14 +87,13 @@ h3 {
     }
     .rating > span:hover,
     .rating > span:hover ~ span {
-      color: transparent;
+      color: orange;
     }
     .rating > span:hover:before,
     .rating > span:hover ~ span:before {
-       content: "\2605";
        position: absolute;
        left: 0; 
-       color: gold;
+       color: orange;
     }
   }
 }
