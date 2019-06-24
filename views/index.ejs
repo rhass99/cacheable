@@ -83,6 +83,48 @@
             <% } %>
           </section>
         </article>
+        <article class="card" data-tag="js">
+          <section class="card-body">
+            <a href="https://eloquentjavascript.net/" target="_blank"><h5 class="card-title">Eloquent Javascript</h5></a>
+            <p class="card-text text-muted">A book about javascript</p>
+            <% if (locals.user) { %>
+              <div class="foot-card">
+                <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button><br>
+                <div class="rating">
+                  <span class="rate5"><i class="fa fa-star"></i></span><span class="rate4"><i class="fa fa-star"></i></span><span class="rate3"><i class="fa fa-star"></i></span><span class="rate2"><i class="fa fa-star"></i></span><span class="rate1"><i class="fa fa-star"></i></span>
+                </div>
+              </div>
+            <% } %>
+          </section>
+        </article>
+        <article class="card" data-tag="sql">
+          <section class="card-body">
+            <a href="https://bytescout.com/blog/20-important-sql-queries.html" target="_blank"><h5 class="card-title">List of important SQL queries</h5></a>
+            <p class="card-text text-muted">Is it 20 or 40 important queries that's listed on this page?</p>
+            <% if (locals.user) { %>
+              <div class="foot-card">
+                <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button><br>
+                <div class="rating">
+                  <span class="rate5"><i class="fa fa-star"></i></span><span class="rate4"><i class="fa fa-star"></i></span><span class="rate3"><i class="fa fa-star"></i></span><span class="rate2"><i class="fa fa-star"></i></span><span class="rate1"><i class="fa fa-star"></i></span>
+                </div>
+              </div>
+            <% } %>
+          </section>
+        </article>
+        <article class="card" data-tag="jquery">
+          <section class="card-body">
+            <a href="https://learn.jquery.com/using-jquery-core/document-ready/" target="_blank"><h5 class="card-title">Jquery document ready</h5></a>
+            <p class="card-text text-muted">Very important to make sure the element that's being selected is actually there before the script starts!</p>
+            <% if (locals.user) { %>
+              <div class="foot-card">
+                <button class="like"><i class="fa fa-heart" aria-hidden="true"></i></button><br>
+                <div class="rating">
+                  <span class="rate5"><i class="fa fa-star"></i></span><span class="rate4"><i class="fa fa-star"></i></span><span class="rate3"><i class="fa fa-star"></i></span><span class="rate2"><i class="fa fa-star"></i></span><span class="rate1"><i class="fa fa-star"></i></span>
+                </div>
+              </div>
+            <% } %>
+          </section>
+        </article>
       </section>
     </div>
   </main>
