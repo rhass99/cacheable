@@ -63,10 +63,6 @@ h3 {
   margin: 0.5em;
 }
 
-.content .card-columns button:hover {
-  /* border: 1px solid $border-color; */
-}
-
 .content .card-columns button:focus {
   outline: 0;
 }
@@ -107,6 +103,10 @@ h3 {
 .box form button {
   margin-top: 1.5em;
 }
+
+.postbox {
+  width: 70%;
+  margin: 0 auto;
 
 .checked {
   color: orange;
@@ -151,6 +151,10 @@ h3 {
 
 .resources ul li h5 {
   display: inline-block;
+}
+
+.checked {
+  color: orange;
 }
 
 @media (min-width: 425px) {
