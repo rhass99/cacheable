@@ -174,10 +174,16 @@ h3 {
     height: 2.625em;
     width: 2.8em;
   }
+  button:focus {
+    outline: 0;
+  }
   input {
     border-radius: 5px;
     width: 60%;
     height: 2.625em;
+  }
+  input:focus {
+    outline: 0;
   }
 }
 #register {

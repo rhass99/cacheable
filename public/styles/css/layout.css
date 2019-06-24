@@ -202,10 +202,18 @@ h3 {
   width: 2.8em;
 }
 
+.search button:focus {
+  outline: 0;
+}
+
 .search input {
   border-radius: 5px;
   width: 60%;
   height: 2.625em;
+}
+
+.search input:focus {
+  outline: 0;
 }
 
 #register {
