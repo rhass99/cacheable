@@ -71,7 +71,11 @@ module.exports = (userdb, postdb) => {
         templateVars.userEmail = userID;
         templateVars.firstName = firstName;
         templateVars.lastName = lastName;
-        res.render('user_profile', {templateVars})
+        res.cookie('_owner', {
+          email: userID,
+          first_name: firstName,
+        })
+        res.redirect('../..');
       }
     })
   });
