@@ -4,6 +4,12 @@ $( document ).ready(function() {
     $(this).toggleClass('liked');
   });
 
+  $('#search_button').on('click', function(e) {
+    let searchString = $('#search_string').val();
+    $(`article`).hide();
+    $(`:contains(${searchString})`).show();
+  })
+
   $('.rate1').on ('click', function (e) {
     $(this).toggleClass('checked');
     $(this).siblings('.rate2').removeClass('checked');
