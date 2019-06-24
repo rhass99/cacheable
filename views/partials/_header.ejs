@@ -17,6 +17,10 @@
         </button>
     
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          
+          <% if(!locals.postExists) { %>
+          <a href="/posts/new" class="dropdown-item">Add new resource</a>
+          <% } %>
           <% if(!locals.resources) { %>
             <a href="/users/<%= locals.userEmail %>/resources" class="dropdown-item">My Resources</a>
             <% } %>

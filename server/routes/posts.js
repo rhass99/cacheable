@@ -20,7 +20,7 @@ module.exports = (postdb, tagdb) => {
     }
     let cookieEmail = req.cookies._owner.email;
     let cookieName = req.cookies._owner.first_name;
-    res.render('post_new', {user: cookieEmail, firstName: cookieName})
+    res.render('post_new', {user: cookieEmail, firstName: cookieName, postExists: true})
   })
 
   // Post new Post (should include tag)
