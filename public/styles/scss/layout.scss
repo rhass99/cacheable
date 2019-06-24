@@ -185,11 +185,19 @@ h3 {
     outline: 0;
   }
 }
+.margin-top {
+  margin-top: 3em;
+}
 #register {
   margin-bottom: 6em;
 }
 #new-form {
   margin-bottom: 6em;
+}
+#comments {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 4em;
 }
 
 //Media Queries
