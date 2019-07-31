@@ -1,5 +1,5 @@
 # Cacheable
-An app that ..
+A pinterest replica
 
 ## Getting Started
 
